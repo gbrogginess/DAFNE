@@ -1,0 +1,33 @@
+SET, FORMAT="19.15f";
+
+!--------------------------------------------------------------
+! Lattice selection and beam parameters
+!--------------------------------------------------------------
+
+CALL, FILE="../sequences/DAFNE_e.seq";
+
+! Beam parameters from C. Milardi's presentation at FCCIS 2023 WP2 Workshop
+Pbeam := 0.51;
+
+EXbeam = 82.8e-9;
+EYbeam = 0.83e-9;
+
+Nbun :=    105;
+NPar :=   2.1e10;
+
+// Beam defined without radiation as a start - radiation is turned on later depending on the requirements
+BEAM, PARTICLE=ELECTRON, NPART=Npar, KBUNCH=Nbun, PC=Pbeam, RADIATE=FALSE, EX=EXbeam, EY=EYbeam;
+
+!--------------------------------------------------------------
+! Load aperture definitions and perform sequence edits
+!--------------------------------------------------------------
+
+// Load the aperture definition (from O. Blanco repository)
+CALL, FILE="../sequences/aperture/DAFNE_aper_definitions.madx";
+
+USE, SEQUENCE = WHOLE;
+
+EXEC, SET_APER;
+
+SAVE, SEQUENCE=WHOLE, FILE="../sequences/DAFNE_e_withAper.seq", BEAM=False;
+

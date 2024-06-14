@@ -1,0 +1,143 @@
+// ****************************************************
+//
+
+ en=510.;
+ dpp=1.;
+ br0=1.701176886;
+ bro=br0*dpp;
+
+ eps = 0.0;
+ 
+ qf1r1tilt := 0.0;
+ qf1l1tilt := 0.0;
+
+ qd0rTilt := 0.0;
+ qd0lTilt := 0.0;
+ 
+ qflfudge := 0.985;
+ qfrfudge := qflfudge;
+ 
+
+// values from KLOE-2 run
+ANG_W =  -0.1102613;
+K1FW =  -0.3101471E-2;
+ANGGP =  0.86393786;
+BETAPL =  -0.037;
+BETASL =  -0.0165;
+BETASS =  0.048;
+BETAPS = -0.0275;
+
+kang_qd0 = 46.0e-3;
+kang_qf1 = -0.0e-3;
+
+// septum quadrupole effect on the beam
+ 
+  kseptum = 0.0085;
+
+// KLOE2 run - Fit result from 30/6/16 measurements fit3
+  ang_w = -0.112200;
+  K1FW = -0.00235702;
+  Fint_wig = 0.37;
+  
+// Multipoles in the IR2 Quads QUAI2001 QUAI2007 and in the DHC used in 2008
+  angh_QI2001 := -0.020;  
+  angh_QI2001 := -0.010;            // 8_4_08  
+  kang_DHCPL201 := -0.013084 + 0.0042;
+  kang_DHCPS201 :=  0.013084 - 0.0042;               //da rivedere
+  kang_DHCPL201 := -0.013084 + 0.0042/2.;            // 8_4_08  
+  kang_DHCPS201 :=  0.013084 - 0.0042/2.;
+
+  dhc :=  (0.009822)- 0.000581;       // 0.00942478   ! valore da disegno .54 gradi+ 0.000341
+  dhc :=  (0.009822 + 0.00034237);   // in order to close the survay Mar 2019 with DHC  in RCR
+
+  aRCR := +0.000956;
+  dhc  :=  (0.009822) - 0.00077;
+
+  kang_DHCPL101 := -dhc;
+  kang_DHCPL201 := - (0.013084 - aRCR);
+  kang_DHCPS101 :=  dhc;
+  kang_DHCPS201 :=  (0.013084 - aRCR);
+
+  qdfudge := 1.;    // dayOne value
+  dd12 := 0.0;
+  dd23 := 0.026;
+ 
+  ki2_1Fudge := 1.;
+  ki2_7Fudge := ki2_1Fudge;
+  ki2_6Fudge := 1.;
+
+ Ti2001=0.0;
+ Ti2002=0.0;
+ Ti2006=0.0;
+ Ti2007=0.0;
+
+! IPs cross angles, used for evaluation of the dispersion contribution from IRs
+
+  ip2_cross_ang = 6.7416E-02;
+  ip1_cross_ang = 2.5E-02;
+
+// guess Nov 2019
+
+ value, INGUESS;
+ KSEPTUM  := 8.725361E-03;
+
+ QDFUDGE := 1.015E+00;
+ QFLFUDGE := 9.702942E-01;
+
+/*
+! params from fit measurements 22/11/2019
+! linear rings
+ANG_W = -0.11688
+K1FW = -0.002         ! -0.0018896  
+QFLFUDGE = 0.95278
+QDFUDGE = 0.99464
+KSEPTUM = 0.0093741
+
+
+! params from fit measurements 12/2019 5 params
+! linear rings
+ANG_W  = -0.1024431
+K1FW = -0.001645808
+QFLFUDGE  = 0.9512862
+QDFUDGE = 0.9986025
+KSEPTUM = 0.01033089
+
+*/
+
+// params from fit excluding WGL params measurements 12/2019  3 params
+// linear rings
+ANG_W  := -0.1122;
+K1FW := -0.235702E-2;
+QFLFUDGE  := 0.9520261;
+QFRFUDGE  := 0.9520261;
+QDFUDGE := 0.9936359;
+KSEPTUM := 0.01033533;
+
+// CW optics match
+DD23 := 0.046357088169;
+
+// III_1 madx 2 rings fit applied on Feb 20th 2020
+// low-beta optics meas Dec 2019
+kseptum  := 8.13496e-03;
+qdfudge := 9.95935e-01;
+qflfudge :=  9.51791e-01;
+qfrfudge :=  9.51791e-01;
+k1fw := -2.04126e-03;
+ang_w  := -1.09714e-01;
+
+// CW optics match
+DD23 := 0.046357088169;
+
+/*
+!
+! The following fudge factors have to be used to run the model with the IR file ir1_siddharta2_QDsliced_1.d
+! Following values have been derived from the ones obtained with the 'III_1 madx 2 rings fit applied on Feb 20th 2020' fit
+!
+qflfudge =  9.41791e-01
+qfrfudge =  9.41791e-01
+qdfudge := -1.0219
+
+*/
+
+RETURN;
+

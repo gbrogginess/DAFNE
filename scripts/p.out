@@ -1,0 +1,3555 @@
+
+  ++++++++++++++++++++++++++++++++++++++++++++
+  +     MAD-X 5.08.01  (64 bit, Darwin)      +
+  + Support: mad@cern.ch, http://cern.ch/mad +
+  + Release   date: 2022.02.25               +
+  + Execution date: 2023.08.05 12:23:50      +
+  ++++++++++++++++++++++++++++++++++++++++++++
+ TITLE, S="Positroni:  Modello  per Siddharta_2 Spt 2019";
+
+// option,echo = false,warn = false;
+
+ set,format="16.9e";
+
+
+
+ CALL, FILE="p_siddharta2_Spt19.par";
+
+// ****************************************************
+
+//
+
+
+
+ en=510.;
+
+ dpp=1.;
+
+ br0=1.701176886;
+
+ bro=br0*dpp;
+
+
+
+ eps = 0.0;
+
+ 
+
+ qf1r1tilt := 0.0;
+
+ qf1l1tilt := 0.0;
+
+
+
+ qd0rTilt := 0.0;
+
+ qd0lTilt := 0.0;
+
+ 
+
+ qflfudge := 0.985;
+
+ qfrfudge := qflfudge;
+
+ 
+
+
+
+// values from KLOE-2 run
+
+ANG_W =  -0.1102613;
+
+K1FW =  -0.3101471E-2;
+
+ANGGP =  0.86393786;
+
+BETAPL =  -0.037;
+
+BETASL =  -0.0165;
+
+BETASS =  0.048;
+
+BETAPS = -0.0275;
+
+
+
+kang_qd0 = 46.0e-3;
+
+kang_qf1 = -0.0e-3;
+
+
+
+// septum quadrupole effect on the beam
+
+ 
+
+  kseptum = 0.0085;
+
+
+
+// KLOE2 run - Fit result from 30/6/16 measurements fit3
+
+  ang_w = -0.112200;
+
+++++++ info: ang_w redefined
+  K1FW = -0.00235702;
+
+++++++ info: k1fw redefined
+  Fint_wig = 0.37;
+
+  
+
+// Multipoles in the IR2 Quads QUAI2001 QUAI2007 and in the DHC used in 2008
+
+  angh_QI2001 := -0.020;  
+
+  angh_QI2001 := -0.010;            // 8_4_08  
+
+++++++ info: angh_qi2001 redefined
+  kang_DHCPL201 := -0.013084 + 0.0042;
+
+  kang_DHCPS201 :=  0.013084 - 0.0042;               //da rivedere
+
+  kang_DHCPL201 := -0.013084 + 0.0042/2.;            // 8_4_08  
+
+++++++ info: kang_dhcpl201 redefined
+  kang_DHCPS201 :=  0.013084 - 0.0042/2.;
+
+++++++ info: kang_dhcps201 redefined
+
+
+  dhc :=  (0.009822)- 0.000581;       // 0.00942478   ! valore da disegno .54 gradi+ 0.000341
+
+  dhc :=  (0.009822 + 0.00034237);   // in order to close the survay Mar 2019 with DHC  in RCR
+
+++++++ info: dhc redefined
+
+
+  aRCR := +0.000956;
+
+  dhc  :=  (0.009822) - 0.00077;
+
+++++++ info: dhc redefined
+
+
+  kang_DHCPL101 := -dhc;
+
+  kang_DHCPL201 := - (0.013084 - aRCR);
+
+++++++ info: kang_dhcpl201 redefined
+  kang_DHCPS101 :=  dhc;
+
+  kang_DHCPS201 :=  (0.013084 - aRCR);
+
+++++++ info: kang_dhcps201 redefined
+
+
+  qdfudge := 1.;    // dayOne value
+
+  dd12 := 0.0;
+
+  dd23 := 0.026;
+
+ 
+
+  ki2_1Fudge := 1.;
+
+  ki2_7Fudge := ki2_1Fudge;
+
+  ki2_6Fudge := 1.;
+
+
+
+ Ti2001=0.0;
+
+ Ti2002=0.0;
+
+ Ti2006=0.0;
+
+ Ti2007=0.0;
+
+
+
+! IPs cross angles, used for evaluation of the dispersion contribution from IRs
+
+
+
+  ip2_cross_ang = 6.7416E-02;
+
+  ip1_cross_ang = 2.5E-02;
+
+
+
+// guess Nov 2019
+
+
+
+ value, INGUESS;
+
+inguess            =  0.000000000e+00 ;
+ KSEPTUM  := 8.725361E-03;
+
+++++++ info: kseptum redefined
+
+
+ QDFUDGE := 1.015E+00;
+
+++++++ info: qdfudge redefined
+ QFLFUDGE := 9.702942E-01;
+
+++++++ info: qflfudge redefined
+
+
+/*
+
+! params from fit measurements 22/11/2019
+
+! linear rings
+
+ANG_W = -0.11688
+
+K1FW = -0.002         ! -0.0018896  
+
+QFLFUDGE = 0.95278
+
+QDFUDGE = 0.99464
+
+KSEPTUM = 0.0093741
+
+
+
+
+
+! params from fit measurements 12/2019 5 params
+
+! linear rings
+
+ANG_W  = -0.1024431
+
+K1FW = -0.001645808
+
+QFLFUDGE  = 0.9512862
+
+QDFUDGE = 0.9986025
+
+KSEPTUM = 0.01033089
+
+
+
+*/
+
+
+
+// params from fit excluding WGL params measurements 12/2019  3 params
+
+// linear rings
+
+ANG_W  := -0.1122;
+
+++++++ info: ang_w redefined
+K1FW := -0.235702E-2;
+
+++++++ info: k1fw redefined
+QFLFUDGE  := 0.9520261;
+
+++++++ info: qflfudge redefined
+QFRFUDGE  := 0.9520261;
+
+++++++ info: qfrfudge redefined
+QDFUDGE := 0.9936359;
+
+++++++ info: qdfudge redefined
+KSEPTUM := 0.01033533;
+
+++++++ info: kseptum redefined
+
+
+// CW optics match
+
+DD23 := 0.046357088169;
+
+++++++ info: dd23 redefined
+
+
+// III_1 madx 2 rings fit applied on Feb 20th 2020
+
+// low-beta optics meas Dec 2019
+
+kseptum  := 8.13496e-03;
+
+++++++ info: kseptum redefined
+qdfudge := 9.95935e-01;
+
+++++++ info: qdfudge redefined
+qflfudge :=  9.51791e-01;
+
+++++++ info: qflfudge redefined
+qfrfudge :=  9.51791e-01;
+
+++++++ info: qfrfudge redefined
+k1fw := -2.04126e-03;
+
+++++++ info: k1fw redefined
+ang_w  := -1.09714e-01;
+
+++++++ info: ang_w redefined
+
+
+// CW optics match
+
+DD23 := 0.046357088169;
+
+++++++ info: dd23 redefined
+
+
+/*
+
+!
+
+! The following fudge factors have to be used to run the model with the IR file ir1_siddharta2_QDsliced_1.d
+
+! Following values have been derived from the ones obtained with the 'III_1 madx 2 rings fit applied on Feb 20th 2020' fit
+
+!
+
+qflfudge =  9.41791e-01
+
+qfrfudge =  9.41791e-01
+
+qdfudge := -1.0219
+
+
+
+*/
+
+
+
+RETURN;
+
+
+
+ 
+
+// call, FILE = "MRp_16_5_08_1e96.cur";
+
+// call, FILE = "MRp_1_4_09_4e30sempre.cur";
+
+// call, FILE = "current.dat";
+
+// call, FILE = "siddharta2_detuned.dat";
+
+// call, FILE = "pMRp_20190703_1355_misureBeta_linear.cur";
+
+//   call, FILE = "eMRe_20191106_2352_notte_1200_mAh.cur";
+
+//   call, FILE = "pMRp_20191219_1654_Misure_beta_linear.cur";   // low-beta optics
+
+//   call, FILE = "pMRp_20200225_1458_SXP_3.cur";                  // CW optics
+
+//   call, FILE = "pMRp_20210715_1232_after_pannello_QUAEI2017.cur";
+
+   call, FILE = "pMRp_20230427_1018_2e14alla32.cur";
+
+//
+
+//  pMRp_20230427_1018_2e14alla32.cur
+
+//
+
+CI1023 := -56.220;
+
+CI1014 := -56.220;
+
+CI2026 := -103.207;
+
+CI2017 := -0.000;
+
+CPL101 := +74.374;
+
+CPL102 := -110.306;
+
+CPL103 := +53.071;
+
+CPL104 := +174.263;
+
+CPL105 := +52.402;
+
+CPL106 := +66.782;
+
+CPL107 := -64.894;
+
+CPL108 := -132.921;
+
+CPL109 := +157.656;
+
+CPL110 := -54.786;
+
+CPL201 := +30.922;
+
+CPL202 := +55.547;
+
+CPL203 := -70.069;
+
+CPL204 := -64.632;
+
+CPL205 := +66.017;
+
+CPL206 := +54.567;
+
+CPL207 := +174.263;
+
+CPL208 := +53.071;
+
+CPL209 := -110.306;
+
+CPL210 := +74.374;
+
+CPL114 := -44.369;
+
+CPL217 := -44.369;
+
+CPS101 := -51.570;
+
+CPS102 := +148.135;
+
+CPS103 := -123.019;
+
+CPS104 := -59.717;
+
+CPS105 := +80.022;
+
+CPS106 := +41.022;
+
+CPS107 := -69.073;
+
+CPS108 := +53.511;
+
+CPS109 := -108.766;
+
+CPS110 := +176.150;
+
+CPS201 := -108.766;
+
+CPS202 := +53.511;
+
+CPS203 := -68.555;
+
+CPS204 := +36.818;
+
+CPS205 := +78.734;
+
+CPS206 := -59.873;
+
+CPS207 := -61.255;
+
+CPS208 := +55.955;
+
+CPS209 := +29.223;
+
+
+
+// Octupole settings
+
+
+
+IOCTPL101 := 10.000;
+
+IOCTPS101 := 0.000;
+
+IOCTPL201 := 30.000;
+
+
+
+CSPL100 := -20.000;
+
+CSPL101 := +55.000;
+
+CSPL102 := +44.000;
+
+CSPL103 := -100.000;
+
+CSPL104 := -165.000;
+
+CSPS101 := +165.000;
+
+CSPS102 := -28.000;
+
+CSPS103 := 00.000;
+
+CSPS201 := -30.000;
+
+CSPS202 := +130.000;
+
+CSPS203 := -77.000;
+
+CSPL202 := -52.000;
+
+CSPL203 := +69.000;
+
+CSPL204 := +85.000;
+
+/*
+
+ISKEWL103 := 1.000;
+
+ISKEWL106 := -15.000;
+
+ISKEWS101 := 0.000;
+
+ISKEWS104 := 15.000;
+
+ISKEWS202 := -4.000;
+
+ISKEWS205 := 0.000;
+
+ISKEWL201 := -7.000;
+
+ISKEWL204 := -4.000;
+
+*/
+
+/*
+
+IHHPI201 := 0.000;
+
+IHHPI102 := -40.771;
+
+IHHPI202 := 0.000;
+
+IHHPI101 := 17.532;
+
+IHHPL101 := 1.012;
+
+IHHPL102 := 6.131;
+
+IHHPL104 := -2.327;
+
+IHHPL105 := 4.682;
+
+IHHPL202 := -2.585;
+
+IHHPL203 := -5.750;
+
+IHHPL205 := 3.867;
+
+IHHPL206 := -1.385;
+
+IHHPS102 := -4.519;
+
+IHHPS103 := 2.342;
+
+IHHPS105 := 0.241;
+
+IHHPS106 := -0.601;
+
+IHHPS201 := -0.294;
+
+IHHPS203 := -1.000;
+
+IHHPS204 := -3.571;
+
+IHHPL103 := 15.790;
+
+IHHPL106 := 4.759;
+
+IHHPS101 := -10.112;
+
+IHHPS104 := 13.432;
+
+IHHPS202 := -2.623;
+
+IHHPS205 := -6.512;
+
+IHHPL201 := 7.015;
+
+IHHPL204 := 4.643;
+
+IVVPI201 := 20.658;
+
+IVVPI102 := -18.269;
+
+IVVPI202 := 20.943;
+
+IVVPI101 := -2.836;
+
+IVVPL101 := 1.703;
+
+IVVPL102 := 0.386;
+
+IVVPL104 := -5.633;
+
+IVVPL105 := -1.909;
+
+IVVPL202 := -1.585;
+
+IVVPL203 := -2.327;
+
+IVVPL205 := 1.511;
+
+IVVPL206 := -2.585;
+
+IVVPS102 := -0.746;
+
+IVVPS103 := -4.879;
+
+IVVPS105 := 0.520;
+
+IVVPS106 := 1.049;
+
+IVVPS201 := 0.210;
+
+IVVPS203 := -0.774;
+
+IVVPS204 := -0.607;
+
+IVVPL103 := -26.883;
+
+IVVPL106 := 8.218;
+
+IVVPS101 := 5.823;
+
+IVVPS104 := -8.265;
+
+IVVPS202 := -4.257;
+
+IVVPS205 := -2.770;
+
+IVVPL201 := -3.147;
+
+IVVPL204 := 4.289;
+
+IHHDPS101 := -92.460;
+
+IHHDPS201 := -100.037;
+
+IHHDPL101 := 84.492;
+
+IHHDPL201 := 95.682;
+
+IVVDPS101 := -3.760;
+
+IVVDPS201 := -29.063;
+
+IVVDPL101 := -5.488;
+
+IVVDPL201 := -27.773;
+
+*/
+
+
+
+return;
+
+
+
+ CALL, FILE="bendx_siddarta1.d";
+
+
+
+!Dipoles of short arc cell
+
+
+
+! nominal values of Fint's and beta's
+
+! Betas computed December 07
+
+// betass = 0.0480;
+
+// betasl =-0.0165;
+
+// betaps =-0.0275;
+
+// betapl =-0.0370;
+
+
+
+ fin1:=0.03969;
+
+ fin2:=0.04317;
+
+ fin3:=0.04073;
+
+ fin4:=0.04656;
+
+ 
+
+finol1:=fin1/(2*0.0375);
+
+finol2:=fin2/(2*0.0375);
+
+finol3:=fin3/(2*0.0375);
+
+finol4:=fin4/(2*0.0375);
+
+
+
+!Dipoles of short arc cell
+
+!small angle = 40.5 degree  (DHSPS102,DHSPS201)
+
+!small angle = 44.89 degree (DHSPS101,DHSPS202)
+
+
+
+angps:=0.78343467-0.00025; //0.78343786  //+ 0.00032
+
+angpp:=0.706858347;
+
+LBB:=0.989997526;
+
+LBBs:=0.99475677-0.000129; //0.99476082  //+ 0.0015
+
+
+
+! vecchi valori
+
+angps:=0.78343786;
+
+++++++ info: angps redefined
+angpp:=0.706858347;
+
+++++++ info: angpp redefined
+LBB:=0.989997526;
+
+++++++ info: lbb redefined
+LBBs:=0.99476082;
+
+++++++ info: lbbs redefined
+
+
+!  sector short
+
+BS1A:SBEND, L:=LBBs/2, ANGLE:=angps/2, e1:=betass, hgap:=.0375, fint:=finol1, fintx:=0;
+
+BS1B:SBEND, L:=LBBs/2, ANGLE:=angps/2, e2:=betass, hgap:=.0375, fint:=0, fintx:=finol1;
+
+
+
+!  parallel short
+
+BS2A:SBEND, L:=LBB/2, ANGLE:=angpp/2, e1:=angpp/2+betaps, hgap:=.0375, fint:=finol2, fintx:=0;
+
+BS2B:SBEND, L:=LBB/2, ANGLE:=angpp/2, e2:=angpp/2+betaps, hgap:=.0375, fint:=0, fintx:=finol2;
+
+
+
+!Dipoles of cell for long arc     
+
+
+
+!large angle := 49.5 gradi  (DHSPL101, DHSPL202)
+
+!large angle := 45.11 gradi (DHSPL102, DHSPL201)
+
+
+
+anggs:=0.78735681;
+
+anggp:=0.86393786; //0.86393798
+
+++++++ info: anggp redefined
+LLBB:=1.20999681; //1.21
+
+LLBBs:=1.20356228;
+
+
+
+! vecchi valori
+
+anggs:=0.78735861;
+
+++++++ info: anggs redefined
+anggp:=0.86393786; //0.86393798
+
+++++++ info: anggp redefined
+LLBB:=1.20999681; //1.21
+
+++++++ info: llbb redefined
+LLBBs:=1.20356303;
+
+++++++ info: llbbs redefined
+
+
+! sector long
+
+BL1A:SBEND, L:=LLBBs/2, ANGLE:=anggs/2, e1:=betasl, hgap:=.0375, fint:=finol3, fintx:=0;
+
+BL1B:SBEND, L:=LLBBs/2, ANGLE:=anggs/2, e2:=betasl, hgap:=.0375, fint:=0, fintx:=finol3;
+
+
+
+! parallel long
+
+BL2A:SBEND, L:=LLBB/2, ANGLE:=anggp/2, e1:=anggp/2+betapl, hgap:=.0375, fint:=finol4, fintx:=0;
+
+BL2B:SBEND, L:=LLBB/2, ANGLE:=anggp/2, e2:=anggp/2+betapl, hgap:=.0375, fint:=0, fintx:=finol4;
+
+
+
+
+
+ value, anggp;
+
+anggp              =  8.639378600e-01 ;
+ value, betapl;
+
+betapl             = -3.700000000e-02 ;
+ value, angpp;
+
+angpp              =  7.068583470e-01 ;
+ value, angpp;
+
+angpp              =  7.068583470e-01 ;
+ value, betaps;
+
+betaps             = -2.750000000e-02 ;
+ value, betass;
+
+betass             =  4.800000000e-02 ;
+ value, betasl;
+
+betasl             = -1.650000000e-02 ;
+ value, betaps;
+
+betaps             = -2.750000000e-02 ;
+ value, betapl;
+
+betapl             = -3.700000000e-02 ;
+
+
+return;
+
+// CALL, FILE="wig_siddarta_low.d";
+
+ CALL, FILE="WiggNew.d";           ! wiggler upgrade 2010
+
+
+
+!  Wiggler model scaled for 400 A
+
+
+
+!title,"Shifted poles model"
+
+
+
+!Per ora: messe tutte le lenti sottili FC uguali tra loro, cosi  come HC
+
+!	  per il dipolo ed il drift messe le dimensioni corrette. Nella lente sottile all inizio
+
+!		metto anche termine dipolare = I0 solito sul semiperiodo-I0 calcolato nella lunghezza del dipolo
+
+
+
+
+
+!The names of the poles are (starting from the left):
+
+!HC1, FC1, FC2, FC3, FC4, FC5 and HC2.
+
+!a, b and c refer to the first, the second and the third lense in each semiperiod of the full poles
+
+!respectively.
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!
+
+!Alcune variabili
+
+
+
+// Fint_wig :=0.37;     ! 0.308 nominal value,0.37 to match Rmatrix, moved in the .par file
+
+
+
+LFC := 0.05375-0.0115;                                              !Di FC
+
+LHC := 0.054-0.0127;                                                !Tra HC e FC
+
+
+
+Lungh_HC := 0.1369;                              !Lunghezza in z di HC
+
+Lungh_FC := 0.2355;                             !Lunghezza in z di FC
+
+LSTART := (2.0126-5*Lungh_FC-2*Lungh_HC-2*LHC-10*LFC)/2.d0;      !Prima di HC1 e dopo HC2
+
+!LSTART := (2.0126-2*Lungh_HC-5*(2*LFC+Lungh_FC)-2.0*LHC)/2.d0;
+
+LSTART := (2.0126-5*Lungh_FC-2*Lungh_HC-3*LHC-10*LFC)-0.00005+0.013225;
+
+++++++ info: lstart redefined
+
+
+!Dipoles.
+
+
+
+!ang_w := -0.1127;   !Wiggler a 400 Amps parametro nel file .loc
+
+
+
+
+
+
+
+HC1b: SBEND,L:=Lungh_HC,  ANGLE:= ang_w,E1:=0,E2:= ang_w,
+
+                         Fint:=Fint_wig,Fintx:=Fint_wig,HGAP:=0.0185;
+
+
+
+FCma: SBEND,L:=Lungh_FC/2,ANGLE:=-ang_w,E1:=-ang_w,E2:=0,
+
+                         Fint:=Fint_wig,Fintx:=0.0,HGAP:=0.0185;
+
+FCmb: SBEND,L:=Lungh_FC/2,ANGLE:=-ang_w,E1:=0,E2:=-ang_w,
+
+                         Fint:=0.0,Fintx:=Fint_wig,HGAP:=0.0185;
+
+
+
+FCpa: SBEND,L:=Lungh_FC/2,ANGLE:= ang_w,E1:= ang_w,E2:=0,
+
+                         Fint:=Fint_wig,Fintx:=0.0,HGAP:=0.0185;
+
+FCpb: SBEND,L:=Lungh_FC/2,ANGLE:= ang_w,E1:=0,E2:= ang_w,
+
+                         Fint:=0.0,Fintx:=Fint_wig,HGAP:=0.0185;
+
+
+
+HC2b: SBEND,L:=Lungh_HC,  ANGLE:= ang_w,E1:= ang_w,E2:=0, 
+
+                         Fint:=Fint_wig,Fintx:=Fint_wig,HGAP:=0.0185;
+
+
+
+!Drifts. 
+
+!I define the drift as DRFC1a and DRFC1b for the two regions of drift at the beginning and at the end of the poles.
+
+
+
+DRHC1a: DRIFT,L:=LSTART;
+
+
+
+DRHC: DRIFT,L:=LHC;
+
+DRFC: DRIFT,L:=LFC;
+
+
+
+!Thin lenses. In a e c metto come dipolo quello che mi avanza dalle due meta  dei dipoli.
+
+!Aggiungi pero  anche l angolo di bending.
+
+!Usata mappa a passo di 2 mm per calcolare gli integrali
+
+
+
+
+
+!K1FW := -2.052595E-03;
+
+k3lepw := -1.3;
+
+k3lipw := -1.9;
+
+k2lepw := 1.;
+
+k2lipw := 2.8;
+
+
+
+!K1FW := -2.052595E-03;
+
+k2lepw := 1.;
+
+++++++ info: k2lepw redefined
+k2lipw := 2.8;
+
+++++++ info: k2lipw redefined
+
+
+
+
+k2lepw := 1.309;
+
+++++++ info: k2lepw redefined
+k2lipw := 4.;
+
+++++++ info: k2lipw redefined
+
+
+k2lepw := .7;
+
+++++++ info: k2lepw redefined
+k2lipw := 4.;
+
+++++++ info: k2lipw redefined
+mdipk2l = -0.6;
+
+
+
+
+
+! riproduce mediamente meglio tutte le misure
+
+!mdipk2l = -0.38;
+
+!k2lipw =  .8;
+
+!k2lepw = .31;
+
+
+
+! fit finale
+
+!k1fw =       -0.002052595 ;
+
+!k3lepw =               -1.3;
+
+!k3lipw =               -1.9;
+
+!k2lepw =       0.9469361246;
+
+!k2lipw =                  4.;
+
+!mdipk2l =               -0.6;
+
+
+
+!ak2l = -1.21675e-01;
+
+!ak2l = 1.;
+
+!k2lepw := .7*ak2l;
+
+!k2lipw := 2.88256e+00*ak2l;
+
+
+
+
+
+!WMHC: multipole,TYPE = wgl,knl:={0.,-0.00065,k2lepw,k3lepw,8200*2.}; 
+
+!WMFCmb:multipole,TYPE = wgl,knl:={0.,0.0147+k1fw,-k2lipw,k3lipw,-14800.*2.};
+
+!WMFCpb:multipole,TYPE = wgl,knl:={0.,0.0147+k1fw, k2lipw,k3lipw,14800.*2.};
+
+
+
+WMHC: multipole,TYPE = wgl,knl:={0.,-0.00065,k2lepw,k3lepw}; 
+
+WMFCmb:multipole,TYPE = wgl,knl:={0.,0.0147+k1fw,-k2lipw,k3lipw};
+
+WMFCpb:multipole,TYPE = wgl,knl:={0.,0.0147+k1fw, k2lipw,k3lipw};
+
+
+
+
+
+!I make each single pole
+
+
+
+HC1: line=(DRHC1a,WMHC,HC1b,WMHC,DRHC);
+
+
+
+FCm: line=(DRFC,FCma,WMFCmb,FCmb,DRFC);
+
+FCp: line=(DRFC,FCpa,WMFCpb,FCpb,DRFC);
+
+HC2: line=(DRHC,WMHC,HC2b,WMHC,DRHC1a);
+
+
+
+!I make the wiggler
+
+!Wiggler: line = (HC1,FC1,FC2,FC3,FC4,FC5,HC2);
+
+
+
+Wig_in :marker;
+
+Wig_out :marker;
+
+
+
+WIGGLERPS1: line= (Wig_in,HC1,FCm,FCp,FCm,FCp,FCm,HC2,Wig_out);
+
+WIGGLERPS2: line= (HC1,FCm,FCp,FCm,FCp,FCm,HC2);
+
+WIGGLERPL1: line= (HC1,FCm,FCp,FCm,FCp,FCm,HC2);
+
+WIGGLERPL2: line= (HC1,FCm,FCp,FCm,FCp,FCm,HC2);
+
+
+
+return;
+
+ CALL, FILE="kick.d";
+
+kckpl101:kicker, hkick:=0.e-03;
+
+kckpl202:kicker, hkick:=.0e-03;
+
+kckpl201:kicker, hkick:=0.e-03;
+
+ktrh:marker;
+
+ktrv:marker;
+
+lcav:=1.84;
+
+rfcav:rfcavity, l:=lcav/2, volt:=0.10, lag:=0.49, harmon:=120;//,
+
+!                tfill=1.,shunt=0.2,pg=0.1;
+
+
+
+ CALL, FILE="bpm_p_19.d";
+
+//
+
+coll_1:rcollimator, l:=0, xsize:=0.04, ysize:=0.02;
+
+
+
+ BPBI1002: monitor;
+
+ BPBI1001: monitor;
+
+ BPBPL111: monitor;
+
+
+
+bpbi1k01:monitor;
+
+bpbi1k02:monitor;
+
+bpbi1k03:monitor;
+
+bpbi1k04:monitor;
+
+bpbi1k05:monitor;
+
+bpbi1k06:monitor;
+
+BPBPI101:monitor;
+
+BPBPI102:monitor;
+
+BPBPL101:monitor;
+
+BPBPL102:monitor;
+
+BPBPL103:monitor;
+
+BPBPL104:monitor;
+
+BPBPL105:monitor;
+
+BPBPL106:monitor;
+
+BPBPL107:monitor;
+
+BPBPL108:monitor;
+
+BPBPL109:monitor;
+
+BPBPL110:monitor;
+
+BPBPS199:monitor;
+
+BPBPS100:monitor;
+
+BPBPS101:monitor;
+
+BPBPS102:monitor;
+
+BPBPS103:monitor;
+
+BPBPS104:monitor;
+
+BPBPS105:monitor;
+
+BPBPS106:monitor;
+
+BPBPS107:monitor;
+
+BPBPS108:monitor;
+
+BPBPL298:marker; //monitor
+
+BPBPL299:monitor;
+
+BPBPL200:monitor;
+
+BPBPL201:monitor;
+
+BPBPL202:monitor;
+
+BPBPL203:monitor;
+
+BPBPL204:monitor;
+
+BPBPL205:monitor;
+
+BPBPL206:monitor;
+
+BPBPL207:monitor;
+
+BPBPL208:monitor;
+
+BPBPL209:monitor;
+
+BPBPS201:monitor;
+
+BPBPS202:monitor;
+
+BPBPS203:monitor;
+
+BPBPS204:monitor;
+
+BPBPS205:monitor;
+
+BPBPS206:monitor;
+
+BPBPS207:monitor;
+
+BPBPS208:monitor;
+
+BPBPS209:monitor;
+
+BPBPS210:monitor;
+
+BPBPS211:monitor; //monitor
+
+ BPBI2001:monitor;
+
+ BPBI2002:monitor;
+
+ BPBI2003:monitor;
+
+ BPBI2007:monitor;
+
+ BPBI2008:monitor;
+
+ BPBI2009:monitor;
+
+ BPBI2F01:monitor;
+
+ BPBI2F02:monitor;
+
+ BPBI2F03:monitor;
+
+ BPBI2F04:monitor;
+
+BPBPI201:monitor;
+
+BPBPI202:monitor;
+
+ slm:marker;
+
+ CALL, FILE="drift_siddharta2_Nov_19.d";
+
+//
+
+//  Drift Sections:
+
+// modified by C.M July on Spt 2019 relatively to the IR branches
+
+//          by C.M. November 2019
+
+//
+
+D0K:DRIFT, L:=.078;
+
+D1K:DRIFT, L:=.1000+.0125-.09625-.078;
+
+D2K:DRIFT, L:=.0125+.09625;
+
+D3K:DRIFT, L:=.0055;
+
+
+
+LB8k:DRIFT, L:=.078;
+
+LB9k:DRIFT, L:=0.1005-.0555+.0425-.078;
+
+LB10k:DRIFT, L:=.0425;
+
+
+
+LCS7:DRIFT, L:=.215;
+
+LCS8:DRIFT, L:=.105;
+
+LCL7:DRIFT, L:=0.215;
+
+LCL8:DRIFT, L:=0.105;
+
+
+
+LB11:=0.156;
+
+LB12:=0.144;
+
+LB21:=0.165;
+
+LB22:=0.135;
+
+LB31:=0.08;
+
+LB33:=0.27;
+
+LB41:=0.14;
+
+LB42:=2.3695; //ex 2.56
+
+LB43:=0.05;
+
+LB1k:DRIFT, L:=0.156;
+
+LB2k:DRIFT, L:=0.144;
+
+LB3k:DRIFT, L:=0.165;
+
+LB4k:DRIFT, L:=0.145;
+
+LB5k:DRIFT, L:=0.12; //0.08 vecchio
+
+LB6k:DRIFT, L:=0.25; //0.27 vecchio
+
+LB7k:DRIFT, L:=0.15;
+
+
+
+//
+
+// Drifts in PS1 IP1 -> PS1
+
+//      in PL1 PL1 -> IP1
+
+LLMS1a:=0.82 -0.533 +0.012 + 0.01365 - 0.048+0.1111328- 0.060646;
+
+LLMS1a_1 := 0.82 -0.533 +0.012 + 0.01365 - 0.048+0.1111328 - 0.05764;
+
+LLMS1:=(2.573785/2.) + 0.753861-1.12 +0.533 -0.012;
+
+LLMS1_1:=(2.573785/2.) - 0.753861 +0.0131 - 0.01365 +0.048-0.1111328 + 0.060646;
+
+LLMS1_2 := (2.573785/2.) - 0.753861 +0.0131 - 0.01365 +0.048-0.1111328 + 0.05764;
+
+LLMS1S:=2.573785;
+
+LLMS2:=0.081589 - 0.0131 +0.0081;
+
+LLMS3:=2.272158 - 0.0081;
+
+LLMS3_1:=2.272158 - 0.02 - 0.0081;
+
+LLMS3_2:=0.02;
+
+LLMS5:=0.465026;
+
+LLMS5_2:=0.465026-.35;
+
+LLMS5_1:=0.35;
+
+LLMS6:=0.12501-0.03 - 0.025; // // //
+
+LLMS6_1:=0.12501-0.052;
+
+LLMS6_2:=0.052-0.018 - 0.025; // //
+
+LLMS8:=0.236011+0.018 - 0.025; // // distanza sxp skew
+
+LLMS8_1:=0.236011-.22+0.03 - 0.025; // // // distanza sxp skew
+
+LLMS8_2:=.22;
+
+LLMS6s:=0.12501;
+
+LLMS8s:=0.23601;
+
+
+
+LMS1:DRIFT, L:=llms1;
+
+LMS1a:DRIFT, L:=llms1a;
+
+LMS1a_1: DRIFT,L:= llms1a_1;
+
+LMS1_1:DRIFT, L:=llms1_1;
+
+LMS1_2: DRIFT,L:= llms1_2;
+
+LMS2:DRIFT, L:=lLMS2;
+
+LMS3:DRIFT, L:=lLMS3;
+
+LMS3_1:DRIFT, L:=lLMS3_1;
+
+LMS3_2:DRIFT, L:=lLMS3_2;
+
+LMS5:DRIFT, L:=lLMS5;
+
+LMS5_1:DRIFT, L:=lLMS5_1;
+
+LMS5_2:DRIFT, L:=lLMS5_2;
+
+LMS6:DRIFT, L:=lLMS6;
+
+LMS6_1:DRIFT, L:=lLMS6_1;
+
+LMS6_2:DRIFT, L:=lLMS6_2;
+
+LMS8:DRIFT, L:=lLMS8;
+
+LMS8_1:DRIFT, L:=lLMS8_1;
+
+LMS8_2:DRIFT, L:=lLMS8_2;
+
+LMS9:DRIFT, L:=0.30353-0.00016;
+
+LMS9_2:DRIFT, L:=0.303531;   // -3.e-8
+
+LLML9:=0.426235;
+
+LML9:DRIFT, L:=lLML9;
+
+LML9_2:DRIFT, L:= 0.42623 + 4.e-6;
+
+ value, llms1;
+
+llms1              =  1.441753500e+00 ;
+ value, lLMS1s;
+
+llms1s             =  2.573785000e+00 ;
+ value, lLMS2;
+
+llms2              =  7.658900000e-02 ;
+ value, lLMS3;
+
+llms3              =  2.264058000e+00 ;
+ value, lLMS5;
+
+llms5              =  4.650260000e-01 ;
+ value, lLMS6;
+
+llms6              =  7.001000000e-02 ;
+ value, lLMS8;
+
+llms8              =  2.290110000e-01 ;
+ value, llml9;
+
+llml9              =  4.262350000e-01 ;
+LC05:DRIFT, L:=0.415;
+
+LC15:DRIFT, L:=0.15;
+
+LCS1:DRIFT, L:=.29595+.15695-0.000003;
+
+LCS2:DRIFT, L:=0.205; //
+
+LCS3:DRIFT, L:=0.130; // 
+
+LCS4:DRIFT, L:=.135;
+
+LCS5:DRIFT, L:=.095; //
+
+LCS6:DRIFT, L:=.390; //
+
+LCS9:DRIFT, L:=.045;
+
+LCS10:DRIFT, L:=.125;
+
+LCS11:DRIFT, L:=.080; //
+
+LCS12:DRIFT, L:=.205; //
+
+LCS13:DRIFT, L:=.40;
+
+LS1_1: DRIFT,L:= 0.37465-0.0007-0.0118;
+
+LS2_1: DRIFT,L:= 0.1283+0.0007+0.0013+0.0118;
+
+LS3_1: DRIFT,L:= 0.1484970-0.0013;
+
+LS1:DRIFT, L:=0.4377472-0.0637008+0.0003-0.0017;
+
+LS2:DRIFT, L:=0.1121998-0.04149800-0.0052998+0.0637008 -0.0003+0.0017;
+
+LS3:DRIFT, L:=0.142998+ 0.0052998;
+
+LS4:DRIFT, L:=0.0685;
+
+LS4_1: DRIFT,L:=0.0639+0.0003;
+
+LS4a:DRIFT, L:=0.05-0.0025+0.0132;
+
+LS4b:DRIFT, L:=0.05+0.0025-0.0132;
+
+LS4_O:DRIFT, L:=0.050;
+
+LS5_1: DRIFT,L:=0.130-0.0127-0.0001-0.012;
+
+LS6_1: DRIFT,L:=0.075000003+0.0127+0.0001+0.012;
+
+
+
+LS5:DRIFT, L:=0.130- 0.0235+ 0.0046+ 0.0004-0.0003-0.0017; //-5 mm rispetto a d13r
+
+LS6:DRIFT, L:=0.075000003; //+5 mm rispetto a d13r
+
+LS6b:DRIFT, L:=0.51450002-0.043299-0.0039; //+5 mm rispetto a d13r
+
+LS6c:DRIFT, L:=0.47350001+0.0235-0.0004+0.0017;
+
+LS7:DRIFT, L:=0.072999999+0.0059+0.008; // ---> da parameter list
+
+LS7b:DRIFT, L:=0.90499997+0.043299+0.0039; //da parameter list
+
+LS7c:DRIFT, L:=0.0885; // ---> da parameter list
+
+LS8:DRIFT, L:=0.1308; // ---> da parameter list
+
+LS9:DRIFT, L:=0.0988077; // ---> da parameter list
+
+LS9a_1: DRIFT,L := 0.06204;
+
+LS9a_2: DRIFT,L := 0.0;
+
+LS9a:DRIFT, L:=0.288-0.000086+0.012007+0.000086; // ---> da parameter list
+
+LS9b:DRIFT, L:=0.27826; // ---> parameter list
+
+LS9b_1: DRIFT,L := 0.0647;
+
+LS9c:DRIFT, L:=0.1512; // ---> parameter list
+
+LS10:DRIFT, L:=0.5026923; // ---> da parameter list  - 0.0000456  per aggiustare L
+
+LS10a:DRIFT, L:=0.0965;
+
+LS11:DRIFT, L:=0.0;
+
+ LMS10:DRIFT, L:= 0.44102141 + 0.0047  +0.023 -0.011;
+
+ LMS11:DRIFT, L:=.52242-0.00853+0.0111396+0.535+0.00002;
+
+ LMS11s:DRIFT, L:=0.99837261 - 0.3668;
+
+ LMS11s_1:DRIFT, L:=.431627 - 0.0047;
+
+ LMS12:DRIFT, L:=2.37763+0.00853-0.535-0.000026;
+
+ LMS12s : DRIFT, L := 0.57704753;
+
+ LMS12s_1:DRIFT, L:=0.90413248+ 0.3668;
+
+ LMS11l:DRIFT, L:=0.98950237 + 0.0032  ;
+
+ LMS11l_1:DRIFT, L:=0.0705472 - 0.0047;
+
+ LMS12l:DRIFT, L:=0.62258468;
+
+ LMS12l_1:DRIFT, L:=1.1755493- 0.0032;
+
+ LMS12l_2:DRIFT, L:=0.053 - 0.02;
+
+ LMS13:DRIFT, L:=0.393 + 0.02;
+
+ LMS13_1 : DRIFT,L := 0.393;
+
+ LMS14_3:DRIFT, L:= 0.383883+0.0006;
+
+ LMS14_4:DRIFT, L:=2.2585909 - 0.023+0.011-0.0006;
+
+ LMS14_2:DRIFT, L:= 2.258903 - 0.023 + 0.011-0.0009;
+
+ LMS14_1:DRIFT, L:=0.38357100+0.0009;  
+
+ LMS15:DRIFT, L:=.155;
+
+LCL1:DRIFT, L:=0.4-.07646+0.00000142-0.000003;
+
+LCL2:DRIFT, L:=0.205;
+
+LCL3:DRIFT, L:=0.130;
+
+LCL4:DRIFT, L:=0.135;
+
+LCL5:DRIFT, L:=.095;
+
+LCL6:DRIFT, L:=.390;
+
+LCL9:DRIFT, L:=0.045;
+
+LCL10:DRIFT, L:=0.125;
+
+LCL11:DRIFT, L:=0.080;
+
+LCL12:DRIFT, L:=0.205;
+
+LCL13:DRIFT, L:=0.4;
+
+ LL13:DRIFT, l:=1.36093247;
+
+ LL13a:DRIFT, l:=.343;
+
+ LL13b:DRIFT, l:=1.022;
+
+ LL13c: DRIFT, l:= 0.10406753;
+
+ LL12f:DRIFT, l:=.43;
+
+ LL12g:DRIFT, l:=.535;
+
+ LL12:DRIFT, L:=1.065;
+
+ LL12a:DRIFT, L:=.185;
+
+ LL12b:DRIFT, L:=.252;
+
+ LL12c:DRIFT, L:=.229;
+
+ LL12d:DRIFT, L:=.144;
+
+ LL12e:DRIFT, L:=.155;
+
+ LL9:DRIFT, L:=0.175;
+
+ LL9a:DRIFT, L:=.078;
+
+ LL9b:DRIFT, L:=.097;
+
+ LL8:DRIFT, L:=1.11;
+
+
+
+ LL8a: DRIFT,L:= 0.115;
+
+ LL8b: DRIFT,L:= 0.940 + 0.163;
+
+ LL8c: DRIFT,L:= 0.75999999+0.163;
+
+ LL8d: DRIFT,L:= 0.295;
+
+
+
+ LL7:DRIFT, L:=0.6280 - 0.163;
+
+ LL7_1:DRIFT, L:=0.0+0.08;
+
+ LL5:DRIFT, L:=0.384;
+
+ LL5a:DRIFT, L:=.357-0.1-0.00004+0.00004;
+
+ LL5b:DRIFT, L:=.067;
+
+ LL5c:DRIFT, L:=.022;
+
+ LL5d:DRIFT, L:=.402-0.1-0.00004+0.00004;
+
+ LL4:DRIFT, L:=0.095-0.00004+0.00004;
+
+ LL1:DRIFT, L:=0.3406-0.00004+0.00004-.000044;
+
+
+
+return;
+
+ CALL, FILE="chv.d";
+
+csqr:=0.210/en;
+
+crctx:=0.186/en;
+
+crcty:=0.173/en;
+
+clmbx:=0.00681/en;
+
+clmby:=0.0161/en;
+
+cox:=0.0649/en;
+
+coy:=0.0435/en;
+
+cskw:=0.0173/en;
+
+ hkps101:=1.;
+
+ hkps102:=1.;
+
+ hkps103:=1.;
+
+ hkps104:=1.;
+
+ hkps105:=1.;
+
+ hkps106:=1.;
+
+ vkps101:=1.;
+
+ vkps102:=1.;
+
+ vkps103:=1.;
+
+ vkps104:=1.;
+
+ vkps105:=1.;
+
+ vkps106:=1.;
+
+ hkps201:=1.;
+
+ hkps202:=1.;
+
+ hkps203:=1.;
+
+ hkps204:=1.;
+
+ hkps205:=1.;
+
+ vkps201:=1.;
+
+ vkps202:=1.;
+
+ vkps203:=1.;
+
+ vkps204:=1.;
+
+ vkps205:=1.;
+
+ hkpl101:=1.;
+
+ hkpl102:=1.;
+
+ hkpl103:=1.;
+
+ hkpl104:=1.;
+
+ hkpl105:=1.;
+
+ hkpl106:=1.;
+
+ vkpl101:=1.;
+
+ vkpl102:=1.;
+
+ vkpl103:=1.;
+
+ vkpl104:=1.;
+
+ vkpl105:=1.;
+
+ vkpl106:=1.;
+
+ hkpl201:=1.;
+
+ hkpl202:=1.;
+
+ hkpl203:=1.;
+
+ hkpl204:=1.;
+
+ hkpl205:=1.;
+
+ hkpl206:=1.;
+
+ vkpl201:=1.;
+
+ vkpl202:=1.;
+
+ vkpl203:=1.;
+
+ vkpl204:=1.;
+
+ vkpl205:=1.;
+
+ vkpl206:=1.;
+
+ hkpi201:=1.;
+
+ hkpi202:=1.;
+
+ hkpi101:=1.;
+
+ hkpi102:=1.;
+
+ vkpi201:=1.;
+
+ vkpi202:=1.;
+
+ vkpi101:=1.;
+
+ vkpi102:=1.;
+
+ hkcpl101:=1.;
+
+ hkcps101:=1.;
+
+ hkcps201:=1.;
+
+ hkcpl201:=1.;
+
+ vkcpl101:=1.;
+
+ vkcps101:=1.;
+
+ vkcps201:=1.;
+
+ vkcpl201:=1.;
+
+                CHVPS101:kicker, hkick:=hkps101*cskw*ihhps101, vkick:=vkps101*cskw*ivvps101;
+
+                CHVPS104:kicker, hkick:=hkps104*cskw*ihhps104, vkick:=vkps104*cskw*ivvps104;
+
+                CHVPS202:kicker, hkick:=hkps202*cskw*ihhps202, vkick:=vkps202*cskw*ivvps202;
+
+                CHVPS205:kicker, hkick:=hkps205*cskw*ihhps205, vkick:=vkps205*cskw*ivvps205;
+
+                CHVPL103:kicker, hkick:=hkpl103*cskw*ihhpl103, vkick:=vkpl103*cskw*ivvpl103;
+
+                CHVPL106:kicker, hkick:=hkpl106*cskw*ihhpl106, vkick:=vkpl106*cskw*ivvpl106;
+
+                CHVPL201:kicker, hkick:=hkpl201*cskw*ihhpl201, vkick:=vkpl201*cskw*ivvpl201;
+
+                CHVPL204:kicker, hkick:=hkpl204*cskw*ihhpl204, vkick:=vkpl204*cskw*ivvpl204;
+
+                CHVPL101:kicker, l:=0.10/2,hkick:=hkpl101*csqr*ihhpl101, vkick:=vkpl101*csqr*ivvpl101;
+
+                CHVPL102:kicker, l:=0.10/2,hkick:=hkpl102*csqr*ihhpl102, vkick:=vkpl102*csqr*ivvpl102;
+
+                CHVPS105:kicker, l:=0.10/2,hkick:=hkps105*csqr*ihhps105, vkick:=vkps105*csqr*ivvps105;
+
+                CHVPS106:kicker, l:=0.10/2,hkick:=hkps106*csqr*ihhps106, vkick:=vkps106*csqr*ivvps106;
+
+                CHVPS201:kicker, l:=0.10/2,hkick:=hkps201*csqr*ihhps201, vkick:=vkps201*csqr*ivvps201;
+
+                CHVPL205:kicker, l:=0.10/2,hkick:=hkpl205*csqr*ihhpl205, vkick:=vkpl205*csqr*ivvpl205;
+
+                CHVPL206:kicker, l:=0.10/2,hkick:=hkpl206*csqr*ihhpl206, vkick:=vkpl206*csqr*ivvpl206;
+
+                          CHVPS102:kicker, l:=0.10/2,hkick:=hkps102*crctx*ihhps102, vkick:=vkps102*crcty*ivvps102;
+
+                          CHVPS103:kicker, l:=0.10/2,hkick:=hkps103*crctx*ihhps103, vkick:=vkps103*crcty*ivvps103;
+
+                          CHVPS203:kicker, l:=0.10/2,hkick:=hkps203*crctx*ihhps203, vkick:=vkps203*crcty*ivvps203;
+
+                          CHVPS204:kicker, l:=0.10/2,hkick:=hkps204*crctx*ihhps204, vkick:=vkps204*crcty*ivvps204;
+
+                          CHVPL104:kicker, l:=0.10/2,hkick:=hkpl104*crctx*ihhpl104, vkick:=vkpl104*crcty*ivvpl104;
+
+                          CHVPL105:kicker, l:=0.10/2,hkick:=hkpl105*crctx*ihhpl105, vkick:=vkpl105*crcty*ivvpl105;
+
+                          CHVPL202:kicker, l:=0.10/2,hkick:=hkpl202*crctx*ihhpl202, vkick:=vkpl202*crcty*ivvpl202;
+
+                          CHVPL203:kicker, l:=0.10/2,hkick:=hkpl203*crctx*ihhpl203, vkick:=vkpl203*crcty*ivvpl203;
+
+llamb:=.155/2.0;
+
+                       CHVPI201:kicker, l:=llamb, hkick:=hkpi201*clmbx*ihhpi201, vkick:=vkpi201*clmby*ivvpi201;
+
+                       CHVPI202:kicker, l:=llamb, hkick:=hkpi202*clmbx*ihhpi202, vkick:=vkpi202*clmby*ivvpi202;
+
+                        CHVPI101:kicker, l:=llamb, hkick:=hkpi101*clmbx*ihhpi101, vkick:=vkpi101*clmby*ivvpi101;
+
+                        CHVPI102:kicker, l:=llamb, hkick:=hkpi102*clmbx*ihhpi102, vkick:=vkpi102*clmby*ivvpi102;
+
+ldhc:=0.328/2.d0;
+
+//dhc:=(0.009822)-0.000581; //0.00942478    // moved in the .par file
+
+kang_DHCPL101:=-dhc; //-0.009501
+
+++++++ info: kang_dhcpl101 redefined
+kang_DHCPL201:=-0.013084;
+
+++++++ info: kang_dhcpl201 redefined
+kang_DHCPS101:=dhc; //0.009501
+
+++++++ info: kang_dhcps101 redefined
+kang_DHCPS201:=0.013084;
+
+++++++ info: kang_dhcps201 redefined
+M_DHCPL101:multipole, knl:={kang_DHCPL101};
+
+M_DHCPL201:multipole, knl:={kang_DHCPL201};
+
+M_DHCPS101:multipole, knl:={kang_DHCPS101};
+
+M_DHCPS101:multipole, knl:={kang_DHCPS101};
+
+++++++ info: element redefined: m_dhcps101
+M_DHCPS101:multipole, knl:={kang_DHCPS101};
+
+++++++ info: element redefined: m_dhcps101
+M_DHCPS201:multipole, knl:={kang_DHCPS201};
+
+dhc1:=0.000637; //0.001057  //0.002129 //0.012046  //0.012676
+
+         DHCPL101:kicker, l:=ldhc, hkick:=hkcpl101*cox*ihhdpl101, vkick:=vkcpl101*coy*ivvdpl101;
+
+         DCPL101s:kicker, l:=(ldhc -dhc1),hkick:=hkcpl101*cox*ihhdpl101, vkick:=vkcpl101*coy*ivvdpl101;
+
+         DCPL101l:kicker, l:=(ldhc +dhc1),hkick:=hkcpl101*cox*ihhdpl101, vkick:=vkcpl101*coy*ivvdpl101;
+
+         DHCPS101:kicker, l:=ldhc, hkick:=hkcps101*cox*ihhdps101, vkick:=vkcps101*coy*ivvdps101;
+
+         DCPS101s:kicker, l:=(ldhc -dhc1),hkick:=hkcps101*cox*ihhdps101, vkick:=vkcps101*coy*ivvdps101;
+
+         DCPS101l:kicker, l:=(ldhc +dhc1),hkick:=hkcps101*cox*ihhdps101, vkick:=vkcps101*coy*ivvdps101;
+
+dch:=0.0; //0.008676
+
+         DHCPS201:kicker, l:=ldhc, hkick:=hkcps201*cox*ihhdps201, vkick:=vkcps201*coy*ivvdps201;
+
+         DCPS201s:kicker, l:=(ldhc + dch),hkick:=hkcps201*cox*ihhdps201, vkick:=vkcps201*coy*ivvdps201;
+
+         DCPS201l:kicker, l:=(ldhc - dch),hkick:=hkcps201*cox*ihhdps201, vkick:=vkcps201*coy*ivvdps201;
+
+         DHCPL201:kicker, l:=ldhc, hkick:=hkcpl201*cox*ihhdpl201, vkick:=vkcpl201*coy*ivvdpl201;
+
+         DCPL201s:kicker, l:=(ldhc + dch),hkick:=hkcpl201*cox*ihhdpl201, vkick:=vkcpl201*coy*ivvdpl201;
+
+         DCPL201l:kicker, l:=(ldhc - dch),hkick:=hkcpl201*cox*ihhdpl201, vkick:=vkcpl201*coy*ivvdpl201;
+
+return; //
+
+// CALL, FILE="sxp_siddarta.d";
+
+// CALL, FILE="sxp_siddarta_p_Jan_09.d";
+
+   CALL, FILE="sxp_siddarta_p_Jun_23.d";
+
+! Large Sestupole Calibration Constants 
+
+lsl:=0.15;
+
+lss:=0.10;
+
+nl := lsl*en;
+
+ns := lss*en;
+
+
+
+! Large Sestupole Calibration Constants [m**-3] I < 150 A
+
+csx1 := 51.177;
+
+csx2 := 49.34;
+
+
+
+! Large Sestupole Calibration Constants   150 A < I < 250 A
+
+ccw0 = 11.5;
+
+ccw1 = -0.053007;
+
+ccw2 = 1.4809E-03;
+
+ccw3 = -3.2758E-06;
+
+
+
+! Short Sestupole Calibration Constants [m**-3]
+
+cssx1:=19.74;
+
+cssx2:=32.8;
+
+
+
+
+
+! Sextupole  k**2 [m**-3] as a function of the energy [MeV] and
+
+! power supply current [A]
+
+
+
+if (cspl100==0) {signSXTKL100=0;} else{signSXTKL100=cspl100/ABS(cspl100);}
+
+SXTKL100 := (signSXTKL100)*(cssx1*ABS(cspl100)+cssx2)/ns;
+
+
+
+if (cspl101==0) {signSXTKL101 =0;} else{signSXTKL101 =cspl101/ABS(cspl101);}
+
+SXTKL101 := (signSXTKL101)*(cssx1*ABS(cspl101)+cssx2)/ns;
+
+
+
+if (cspl102==0) {signSXTKL102 =0;} else{signSXTKL102 =cspl102/ABS(cspl102);}
+
+SXTKL102 := (signSXTKL102)*(csx1*ABS(cspl102)+csx2)/nl;
+
+
+
+if (cspl103==0) {signSXTKL103 =0;} else{signSXTKL103 =cspl103/ABS(cspl103);}
+
+SXTKL103 := (signSXTKL103)*(csx1*ABS(cspl103)+csx2)/nl;
+
+
+
+if (cspl104==0) {signSXTKL104 =0;} else{signSXTKL104 =cspl104/ABS(cspl104);}
+
+SXTKL104 := (signSXTKL104)*(ccw0+ccw1*ABS(cspl104)+ccw2*
+
+            ABS(cspl104)*ABS(cspl104)+ccw3*ABS(cspl104)*
+
+            ABS(cspl104)*ABS(cspl104))/(br0*lsl);
+
+
+
+
+
+if (csps101==0) {signSXTKS101 =0;} else{signSXTKS101 =csps101/ABS(csps101);}
+
+SXTKS101 := (signSXTKS101)*(ccw0+ccw1*ABS(csps101)+ccw2*
+
+            ABS(csps101)*ABS(csps101)+ccw3*ABS(csps101)*
+
+            ABS(csps101)*ABS(csps101))/(br0*lsl);
+
+
+
+if (csps102==0) {signSXTKS102 =0;} else{signSXTKS102 =csps102/ABS(csps102);}
+
+SXTKS102 := (signSXTKS102)*(csx1*ABS(csps102)+csx2)/nl;
+
+
+
+if (csps103==0) {signSXTKS103 =0;} else{signSXTKS103 =csps103/ABS(csps103);}
+
+SXTKS103 := (signSXTKS103)*(csx1*ABS(csps103)+csx2)/nl;
+
+
+
+if (csps104==0) {signSXTKS104 =0;} else{signSXTKS104 =csps104/ABS(csps104);}
+
+SXTKS104 := (signSXTKS104)*(cssx1*ABS(csps104)+cssx2)/ns;
+
+
+
+if (csps201==0) {signSXTKS201 =0;} else{signSXTKS201 =csps201/ABS(csps201);}
+
+SXTKS201 := (signSXTKS201)*(cssx1*ABS(csps201)+cssx2)/ns;
+
+
+
+if (csps202==0) {signSXTKS202 =0;} else{signSXTKS202 =csps202/ABS(csps202);}
+
+SXTKS202 := (signSXTKS202)*(csx1*ABS(csps202)+csx2)/nl;
+
+
+
+if (csps203==0) {signSXTKS203 =0;} else{signSXTKS203 =csps203/ABS(csps203);}
+
+SXTKS203 := (signSXTKS203)*(csx1*ABS(csps203)+csx2)/nl;
+
+
+
+if (csps204==0) {signSXTKS204 =0;} else{signSXTKS204 =csps204/ABS(csps204);}
+
+SXTKS204 := (signSXTKS204)*(cssx1*ABS(csps204)+cssx2)/ns;
+
+
+
+if (cspl201==0) {signSXTKL201 =0;} else{signSXTKL201 =cspl201/ABS(cspl201);}
+
+SXTKL201 := (signSXTKL201)*(cssx1*ABS(cspl201)+cssx2)/ns;
+
+
+
+
+
+if (cspl202==0) {signSXTKL202 =0;} else{signSXTKL202 =cspl202/ABS(cspl202);}
+
+SXTKL202 := (signSXTKL202)*(csx1*ABS(cspl202)+csx2)/nl;
+
+
+
+
+
+if (cspl203==0) {signSXTKL203 =0;} else{signSXTKL203 =cspl203/ABS(cspl203);}
+
+SXTKL203 := (signSXTKL203)*(csx1*ABS(cspl203)+csx2)/nl;
+
+
+
+if (cspl204==0) {signSXTKL204 =0;} else{signSXTKL204 =cspl204/ABS(cspl204);}
+
+SXTKL204 := (signSXTKL204)*(cssx1*ABS(cspl204)+cssx2)/ns;
+
+
+
+
+
+/*
+
+SXTKL100:= 0.0;
+
+SXTKL101:=  0.0;
+
+SXTKL102:=  0.0;
+
+SXTKL103:=  0.0;
+
+SXTKL104:=  0.0;
+
+SXTKS101:=  0.0;
+
+SXTKS102:=  0.0;
+
+SXTKS103:=  0.0;
+
+SXTKS104:=  0.0;
+
+SXTKS201:=  0.0;
+
+SXTKS202:=  0.0;
+
+SXTKS203:=  0.0;
+
+SXTKS204:=  0.0;
+
+SXTKL201:=  0.0;
+
+SXTKL202:=  0.0;
+
+SXTKL203:=  0.0;
+
+SXTKL204:=  0.0;
+
+*/
+
+
+
+SXPPL100:SEXTUPOLE, L:=lss/2, K2:=SXTKL100;
+
+SXPPL101:SEXTUPOLE, L:=lss/2, K2:=SXTKL101;
+
+SXPPL102:SEXTUPOLE, L:=lsl/2, K2:=SXTKL102;
+
+SXPPL103:SEXTUPOLE, L:=lsl/2, K2:=SXTKL103;
+
+
+
+SXPPL104:SEXTUPOLE, L:=lsl/2, K2:=SXTKL104; // Crab-Waist sextupole
+
+SXPPS101:SEXTUPOLE, L:=lsl/2, K2:=SXTKS101; // Crab-Waist sextupole
+
+
+
+SXPPS102:SEXTUPOLE, L:=lsl/2, K2:=SXTKS102;
+
+SXPPS103:SEXTUPOLE, L:=lsl/2, K2:=SXTKS103;
+
+SXPPS104:SEXTUPOLE, L:=lss/2, K2:=SXTKS104;
+
+SXPPS201:SEXTUPOLE, L:=lss/2, K2:=SXTKS201;
+
+SXPPS202:SEXTUPOLE, L:=lsl/2, K2:=SXTKS202;
+
+SXPPS203:SEXTUPOLE, L:=lsl/2, K2:=SXTKS203;
+
+SXPPS204:SEXTUPOLE, L:=lss/2, K2:=SXTKS204;
+
+SXPPL201:SEXTUPOLE, L:=lss/2, K2:=SXTKL201;
+
+SXPPL202:SEXTUPOLE, L:=lsl/2, K2:=SXTKL202;
+
+SXPPL203:SEXTUPOLE, L:=lsl/2, K2:=SXTKL203;
+
+SXPPL204:SEXTUPOLE, L:=lss/2, K2:=SXTKL204;
+
+
+
+// Octupoles
+
+
+
+KOCTPS101:=8.388*IOCTPS101;
+
+KOCTPL201:=8.388*IOCTPL201;
+
+KOCTPL101:=8.388*IOCTPL101;
+
+
+
+OCTPS101:MULTIPOLE, knl:={0,0,0,KOCTPS101};
+
+OCTPL201:MULTIPOLE, knl:={0,0,0,KOCTPL201};
+
+OCTPL101:MULTIPOLE, knl:={0,0,0,KOCTPL101};
+
+
+
+// Multipoles in QUADs
+
+
+
+sks104=0.0;
+
+sks105=0.0;
+
+sks205=0.0;
+
+sks206=0.0;
+
+skl204=0.0;
+
+skl205=0.0;
+
+skl106=0.0;
+
+skl107=0.0;
+
+
+
+multips104:MULTIPOLE, knl:={0,0,sks104};
+
+multips105:MULTIPOLE, knl:={0,0,sks105};
+
+multips205:MULTIPOLE, knl:={0,0,sks205};
+
+multips206:MULTIPOLE, knl:={0,0,sks206};
+
+multipl204:MULTIPOLE, knl:={0,0,skl204};
+
+multipl205:MULTIPOLE, knl:={0,0,skl205};
+
+multipl106:MULTIPOLE, knl:={0,0,skl106};
+
+multipl107:MULTIPOLE, knl:={0,0,skl107};
+
+ CALL, FILE="skew.d";
+
+lsk:=0.20;
+
+csk:=2.80E-3;
+
+ksks101:=csk*(iskews101 + diskews101);
+
+ksks104:=csk*(iskews104 + diskews104);
+
+ksks202:=csk*(iskews202 + diskews202);
+
+ksks205:=csk*(iskews205 + diskews205);
+
+kskl103:=csk*(iskewl103 + diskewl103);
+
+kskl106:=csk*(iskewl106 + diskewl106);
+
+kskl201:=csk*(iskewl201 + diskewl201);
+
+kskl204:=csk*(iskewl204 + diskewl204);
+
+mytilt=0.0;
+
+QSKPL103:quadrupole, l:=lsk/2, k1:=kskl103,tilt=mytilt;
+
+QSKPL106:quadrupole, l:=lsk/2, k1:=kskl106,tilt=mytilt;
+
+QSKPS101:quadrupole, l:=lsk/2, k1:=ksks101,tilt=mytilt;
+
+QSKPS104:quadrupole, l:=lsk/2, k1:=ksks104,tilt=mytilt;
+
+QSKPS202:quadrupole, l:=lsk/2, k1:=ksks202,tilt=mytilt;
+
+QSKPS205:quadrupole, l:=lsk/2, k1:=ksks205,tilt=mytilt;
+
+QSKPL201:quadrupole, l:=lsk/2, k1:=kskl201,tilt=mytilt;
+
+QSKPL204:quadrupole, l:=lsk/2, k1:=kskl204,tilt=mytilt;
+
+ CALL, FILE="qua_siddarta_p_08.d";
+
+sept_quad:multipole, knl:={0,kseptum};
+
+c1s:=9.1277;
+
+c2s:=4.53;
+
+c1l:=16.963;
+
+c2l:=5.62;
+
+lsq:=0.29; // large
+
+llq:=0.30; // small
+
+lla:=0.38; // large aperture
+
+c1la:=3.9786;
+
+c2la:=2.72;
+
+ kl101:=(cpl101/ABS(cpl101))*(c1s*(abs(cpl101)+eps+dpl101)+c2s)/en;
+
+ kl102:=(cpl102/ABS(cpl102))*(c1s*(abs(cpl102)+eps+dpl102)+c2s)/en;
+
+ kl103:=(cpl103/ABS(cpl103))*(c1la*(abs(cpl103)+eps+dpl103)+c2la)/en;
+
+ kl104:=(cpl104/ABS(cpl104))*(c1s*(abs(cpl104)+eps+dpl104)+c2s)/en;
+
+ kl114:=(cpl114/ABS(cpl114))*(c1l*(abs(cpl114)+eps+dpl114)+c2l)/en;
+
+ kl105:=(cpl105/ABS(cpl105))*(c1l*(abs(cpl105)+eps+dpl105)+c2l)/en;
+
+ kl106:=(cpl106/ABS(cpl106))*(c1l*(abs(cpl106)+eps+dpl106)+c2l)/en;
+
+ kl107:=(cpl107/ABS(cpl107))*(c1l*(abs(cpl107)+eps+dpl107)+c2l)/en;
+
+ kl108:=(cpl108/ABS(cpl108))*(c1s*(abs(cpl108)+eps+dpl108)+c2s)/en;
+
+ kl109:=(cpl109/ABS(cpl109))*(c1s*(abs(cpl109)+eps+dpl109)+c2s)/en;
+
+ kl110:=(cpl110/ABS(cpl110))*(c1s*(abs(cpl110)+eps+dpl110)+c2s)/en;
+
+ kl111:=(ci1014/ABS(ci1014))*(c1s*(abs(ci1014)+eps+di1014)+c2s)/en;
+
+ kl201:=(cpl201/ABS(cpl201))*(c1s*(ABS(cpl201)+eps+dpl201)+c2s)/en;
+
+ kl202:=(cpl202/ABS(cpl202))*(c1s*(ABS(cpl202)+eps+dpl202)+c2s)/en;
+
+ kl203:=(cpl203/ABS(cpl203))*(c1s*(ABS(cpl203)+eps+dpl203)+c2s)/en;
+
+ kl204:=(cpl204/ABS(cpl204))*(c1l*(ABS(cpl204)+eps+dpl204)+c2l)/en;
+
+ kl205:=(cpl205/ABS(cpl205))*(c1l*(ABS(cpl205)+eps+dpl205)+c2l)/en;
+
+ kl206:=(cpl206/ABS(cpl206))*(c1l*(ABS(cpl206)+eps+dpl206)+c2l)/en;
+
+ kl207:=(cpl207/ABS(cpl207))*(c1s*(ABS(cpl207)+eps+dpl207)+c2s)/en;
+
+ kl217:=(cpl217/ABS(cpl217))*(c1l*(ABS(cpl217)+eps+dpl217)+c2l)/en;
+
+ kl208:=(cpl208/ABS(cpl208))*(c1la*(ABS(cpl208)+eps+dpl208)+c2la)/en;
+
+ kl209:=(cpl209/ABS(cpl209))*(c1s*(ABS(cpl209)+eps+dpl209)+c2s)/en;
+
+ kl210:=(cpl210/ABS(cpl210))*(c1s*(ABS(cpl210)+eps+dpl210)+c2s)/en;
+
+ ks100:=(ci1023/ABS(ci1023))*(c1s*(ABS(ci1023)+eps+di1023)+c2s)/en;
+
+ ks101:=(cps101/ABS(cps101))*(c1s*(ABS(cps101)+eps+dps101)+c2s)/en;
+
+ ks102:=(cps102/ABS(cps102))*(c1s*(ABS(cps102)+eps+dps102)+c2s)/en;
+
+ ks103:=(cps103/ABS(cps103))*(c1s*(ABS(cps103)+eps+dps103)+c2s)/en;
+
+ ks104:=(cps104/ABS(cps104))*(c1l*(ABS(cps104)+eps+dps104)+c2l)/en;
+
+ ks105:=(cps105/ABS(cps105))*(c1l*(ABS(cps105)+eps+dps105)+c2l)/en;
+
+ ks106:=(cps106/ABS(cps106))*(c1l*(ABS(cps106)+eps+dps106)+c2l)/en;
+
+ ks107:=(cps107/ABS(cps107))*(c1s*(ABS(cps107)+eps+dps107)+c2s)/en;
+
+ ks108:=(cps108/ABS(cps108))*(c1s*(ABS(cps108)+eps+dps108)+c2s)/en;
+
+ ks109:=(cps109/ABS(cps109))*(c1s*(ABS(cps109)+eps+dps109)+c2s)/en;
+
+ ks110:=(cps110/ABS(cps110))*(c1s*(ABS(cps110)+eps+dps110)+c2s)/en;
+
+ ks201:=(cps201/ABS(cps201))*(c1s*(ABS(cps201)+eps+dps201)+c2s)/en;
+
+ ks202:=(cps202/ABS(cps202))*(c1s*(ABS(cps202)+eps+dps202)+c2s)/en;
+
+ ks203:=(cps203/ABS(cps203))*(c1s*(ABS(cps203)+eps+dps203)+c2s)/en;
+
+ ks204:=(cps204/ABS(cps204))*(c1l*(ABS(cps204)+eps+dps204)+c2l)/en;
+
+ ks205:=(cps205/ABS(cps205))*(c1l*(ABS(cps205)+eps+dps205)+c2l)/en;
+
+ ks206:=(cps206/ABS(cps206))*(c1l*(ABS(cps206)+eps+dps206)+c2l)/en;
+
+ ks207:=(cps207/ABS(cps207))*(c1s*(ABS(cps207)+eps+dps207)+c2s)/en;
+
+ ks208:=(cps208/ABS(cps208))*(c1s*(ABS(cps208)+eps+dps208)+c2s)/en;
+
+ ks209:=(cps209/ABS(cps209))*(c1s*(ABS(cps209)+eps+dps209)+c2s)/en;
+
+ 
+
+quapl101:quadrupole, L:=llq/2, K1:=kl101;
+
+quapl102:quadrupole, L:=llq/2, K1:=kl102;
+
+
+
+quapl103:quadrupole, L:=lla/2, K1:=kl103;
+
+quapl103a: quadrupole, L:= ((lla/2)-0.089), K1 := kl103;
+
+quapl103b: quadrupole, L:= 0.089, K1 := kl103;
+
+
+
+quapl103:quadrupole, L:=(lla/2),k1:=kl103;
+
+++++++ info: element redefined: quapl103
+quapl103:quadrupole, L:=(lla/2),k1:=kl103;
+
+++++++ info: element redefined: quapl103
+quapl104:quadrupole, L:=llq/2, K1:=kl104;
+
+quapL114:quadrupole, L:=lsq/2, K1:=kl114;
+
+quapL105:quadrupole, L:=lsq/2, K1:=kl105;
+
+quapL106:quadrupole, L:=lsq/2, K1:=kl106;
+
+quapL107:quadrupole, L:=lsq/2, K1:=kl107;
+
+quapL108:quadrupole, L:=llq/2, K1:=kl108;
+
+quapL109:quadrupole, L:=llq/2, K1:=kl109;
+
+quapL110:quadrupole, L:=llq/2, K1:=kl110;
+
+quapL111:quadrupole, L:=llq/2, K1:=kl111;
+
+quapL201:quadrupole, L:=llq/2, K1:=kl201;
+
+quapL202:quadrupole, L:=llq/2, K1:=kl202;
+
+quapL203:quadrupole, L:=llq/2, K1:=kl203;
+
+quapL204:quadrupole, L:=lsq/2, K1:=kl204;
+
+quapL205:quadrupole, L:=lsq/2, K1:=kl205;
+
+quapL206:quadrupole, L:=lsq/2, K1:=kl206;
+
+quapL217:quadrupole, L:=lsq/2, K1:=kl217;
+
+quapl207:quadrupole, L:=llq/2, K1:=kl207;
+
+
+
+quapl208: quadrupole,L := lla/2, K1 := kl208;
+
+quapl208b:quadrupole,L := 0.089, K1 := kl208;
+
+quapl208a:quadrupole,L := ((lla/2)-0.089), K1 := kl208;
+
+
+
+quapl209:quadrupole, L:=llq/2, K1:=kl209;
+
+quapl210:quadrupole, L:=llq/2, K1:=kl210;
+
+quaps100:quadrupole, L:=llq/2, K1:=ks100;
+
+quaps101:quadrupole, L:=llq/2, K1:=ks101;
+
+quaps102:quadrupole, L:=llq/2, K1:=ks102;
+
+quaps103:quadrupole, L:=llq/2, K1:=ks103;
+
+quaps104:quadrupole, L:=lsq/2, K1:=ks104;
+
+quaps105:quadrupole, L:=lsq/2, K1:=ks105;
+
+quaps106:quadrupole, L:=lsq/2, K1:=ks106;
+
+quaps107:quadrupole, L:=llq/2, K1:=ks107;
+
+quaps108:quadrupole, L:=llq/2, K1:=ks108;
+
+quaps109:quadrupole, L:=llq/2, K1:=ks109;
+
+quaps110:quadrupole, L:=llq/2, K1:=ks110;
+
+quaps201:quadrupole, L:=llq/2, K1:=ks201;
+
+quaps202:quadrupole, L:=llq/2, K1:=ks202;
+
+quaps203:quadrupole, L:=llq/2, K1:=ks203;
+
+quaps204:quadrupole, L:=lsq/2, K1:=ks204;
+
+quaps205:quadrupole, L:=lsq/2, K1:=ks205;
+
+quaps206:quadrupole, L:=lsq/2, K1:=ks206;
+
+quaps207:quadrupole, L:=llq/2, K1:=ks207;
+
+quaps208:quadrupole, L:=llq/2, K1:=ks208;
+
+quaps209:quadrupole, L:=llq/2, K1:=ks209;
+
+ value, kl111;
+
+kl111              = -1.015077047e+00 ;
+ value, ks100;
+
+ks100              = -1.015077047e+00 ;
+//  CALL, FILE="qua_siddarta_19_10.d";
+
+ CALL, FILE="ir1_siddharta2_p_Spt19.d";
+
+//
+
+// adapted from ir1_siddarta_bendMoved1.d on Spt 2019
+
+//
+
+kang_qd0:=45.99480e-3;
+
+++++++ info: kang_qd0 redefined
+kang_qf1:=0.0;
+
+++++++ info: kang_qf1 redefined
+ 
+
+dhk_qd0s:multipole, knl:={kang_qd0};
+
+dhk_qd0l:multipole, knl:={-kang_qd0};
+
+dhk_qf1s:multipole, knl:={kang_qf1};
+
+dhk_qf1l:multipole, knl:={-kang_qf1};
+
+
+
+d0: drift,l=0.2352;
+
+//dd23:=0.026; //0.032  Moved 26_1_08
+
+d1:drift, l:=0.294-0.2352;
+
+dir2:drift, l:=lir2-dd12+dd23;
+
+dir3:drift, l:=lir3-dd23;
+
+dir3s:drift,l:=lir3s -dd23;
+
+dir5:drift, l:=lir5;
+
+dir4:drift, l:=lir4;
+
+dir4s:drift,l:=lir4s;
+
+dqd02:drift, l:=0.02;
+
+dqd02_hk1:drift, l:=0.02-0.004230; //0.005341
+
+dqd02_hk2:drift, l:=0.02+0.004230; //0.005341
+
+dqd03:drift, l:=0.01;
+
+dqf12:drift, l:=0.02;
+
+dqf13:drift, l:=0.01;
+
+dqf12_1:drift,l:=0.02-0.00745;   
+
+dqf12_2: drift,l:=0.00745;
+
+
+
+LQD0:=0.23;
+
+LQF1:=0.24;
+
+LIR2:=0.152925+0.073 + 0.00153;
+
+LIR3:=0.23543523-0.003-0.00153 + 0.0095491;
+
+LIR3s:=0.23090523 + 0.44081;
+
+LIR4:=0.4637015 - 0.0095491;
+
+LIR4s:=0.4637015 - 0.44081;
+
+LIR5:=0.55678 - 0.0595335 + 0.047;
+
+
+
+pc1:marker;
+
+
+
+kqd1:=kqd0;
+
+kqd2:=kqd0;
+
+kQFl:=kQF1;
+
+kQFs:=kQF1;
+
+
+
+LQD0:=0.23;
+
+++++++ info: lqd0 redefined
+LQF1:=0.24;
+
+++++++ info: lqf1 redefined
+
+
+PMQDI101:quadrupole, l:=lqd0/2, k1:=kQD1;
+
+PMQDI102:quadrupole, l:=lqd0/2, k1:=kQD2;
+
+PMQFPL01:quadrupole, l:=lqf1/2, k1:=kQFl;
+
+PMQFPS01:quadrupole, l:=lqf1/2, k1:=kQFs;
+
+
+
+ value, lqd0;
+
+lqd0               =  2.300000000e-01 ;
+ value, lqf1;
+
+lqf1               =  2.400000000e-01 ;
+ value, lir2;
+
+lir2               =  2.274550000e-01 ;
+ value, lir3;
+
+lir3               =  2.404543300e-01 ;
+ value, lir4;
+
+lir4               =  4.541524000e-01 ;
+ value, lir5;
+
+lir5               =  5.442465000e-01 ;
+ 
+
+midqd0:marker;
+
+midqf1:marker;
+
+
+
+cqf1re:=1.0044*qfrfudge; // Qf short normalization to the Aster value 3.020
+
+cqf1le:=1.0044*qflfudge; // Qf long
+
+
+
+//kqd0:=-16.5677*qdfudge;  value of the Aster PMQDs
+
+kqd0 := -16.0673*qdfudge;           !   value of the PMQD ESRF 2019 file.par
+
+
+
+			  
+
+QD0r:SBEND, L:=0.240, ANGLE:=0.047175, k1:=KQD0, e1:=0, e2:=0;
+
+QD0l:SBEND, L:=0.240, ANGLE:=-0.047175, k1:=KQD0, e1:=0, e2:=0;
+
+
+
+qf1r1tilt:=0.0;
+
+++++++ info: qf1r1tilt redefined
+qf1re1:multipole, knl:={0,cqf1re*0.000413},tilt:=qf1r1tilt;
+
+qf1re2:multipole, knl:={0,cqf1re*0.001974},tilt:=qf1r1tilt;
+
+qf1re3:multipole, knl:={0,cqf1re*0.012612},tilt:=qf1r1tilt;
+
+qf1re4:multipole, knl:={0,cqf1re*0.067989},tilt:=qf1r1tilt;
+
+qf1re5:multipole, knl:={0,cqf1re*0.126753},tilt:=qf1r1tilt;
+
+qf1re6:multipole, knl:={0,cqf1re*0.139447},tilt:=qf1r1tilt;
+
+qf1re7:multipole, knl:={0,cqf1re*0.143812},tilt:=qf1r1tilt;
+
+qf1re8:multipole, knl:={0,cqf1re*0.145835},tilt:=qf1r1tilt;
+
+qf1re9:multipole, knl:={0,cqf1re*0.148106},tilt:=qf1r1tilt;
+
+qf1re10:multipole, knl:={0,cqf1re*0.152424},tilt:=qf1r1tilt;
+
+qf1re11:multipole, knl:={0,cqf1re*0.158200},tilt:=qf1r1tilt;
+
+qf1re12:multipole, knl:={0,cqf1re*0.158471},tilt:=qf1r1tilt;
+
+qf1re13:multipole, knl:={0,cqf1re*0.154506},tilt:=qf1r1tilt;
+
+qf1re14:multipole, knl:={0,cqf1re*0.145894},tilt:=qf1r1tilt;
+
+qf1re15:multipole, knl:={0,cqf1re*0.129588},tilt:=qf1r1tilt;
+
+qf1re16:multipole, knl:={0,cqf1re*0.073448},tilt:=qf1r1tilt;
+
+qf1re17:multipole, knl:={0,cqf1re*0.014374},tilt:=qf1r1tilt;
+
+qf1re18:multipole, knl:={0,cqf1re*0.002270},tilt:=qf1r1tilt;
+
+qf1re19:multipole, knl:={0,cqf1re*0.000485},tilt:=qf1r1tilt;
+
+qf1le19:multipole, knl:={0,cqf1le*0.000413},tilt:=qf1r1tilt;
+
+qf1le18:multipole, knl:={0,cqf1le*0.001974},tilt:=qf1r1tilt;
+
+qf1le17:multipole, knl:={0,cqf1le*0.012612},tilt:=qf1r1tilt;
+
+qf1le16:multipole, knl:={0,cqf1le*0.067989},tilt:=qf1r1tilt;
+
+qf1le15:multipole, knl:={0,cqf1le*0.126753},tilt:=qf1r1tilt;
+
+qf1le14:multipole, knl:={0,cqf1le*0.139447},tilt:=qf1r1tilt;
+
+qf1le13:multipole, knl:={0,cqf1le*0.143812},tilt:=qf1r1tilt;
+
+qf1le12:multipole, knl:={0,cqf1le*0.145835},tilt:=qf1r1tilt;
+
+qf1le11:multipole, knl:={0,cqf1le*0.148106},tilt:=qf1r1tilt;
+
+qf1le10:multipole, knl:={0,cqf1le*0.152424},tilt:=qf1r1tilt;
+
+qf1le9:multipole, knl:={0,cqf1le*0.158200},tilt:=qf1r1tilt;
+
+qf1le8:multipole, knl:={0,cqf1le*0.158471},tilt:=qf1r1tilt;
+
+qf1le7:multipole, knl:={0,cqf1le*0.154506},tilt:=qf1r1tilt;
+
+qf1le6:multipole, knl:={0,cqf1le*0.145894},tilt:=qf1r1tilt;
+
+qf1le5:multipole, knl:={0,cqf1le*0.129588},tilt:=qf1r1tilt;
+
+qf1le4:multipole, knl:={0,cqf1le*0.073448},tilt:=qf1r1tilt;
+
+qf1le3:multipole, knl:={0,cqf1le*0.014374},tilt:=qf1r1tilt;
+
+qf1le2:multipole, knl:={0,cqf1le*0.002270},tilt:=qf1r1tilt;
+
+qf1le1:multipole, knl:={0,cqf1le*0.000485},tilt:=qf1r1tilt;
+
+
+
+lQF1re:line=(dqf13,qf1re1,
+
+                          dqf12,qf1re2,dqf12,qf1re3,dqf12,qf1re4,dqf12,qf1re5,
+
+                          dqf12,qf1re6,dqf12,qf1re7,dqf12,qf1re8,dqf12,qf1re9,
+
+                          dqf12,qf1re10,midqf1,dqf12,qf1re11,dqf12,qf1re12,dqf12,
+
+                          qf1re13,dqf12,qf1re14,dqf12,qf1re15,dqf12,qf1re16,dqf12,qf1re17,
+
+                          dqf12,qf1re18,dqf12,qf1re19,dqf13);
+
+lQF1le:line=(dqf13,qf1le1,
+
+                          dqf12,qf1le2,dqf12,qf1le3,dqf12,qf1le4,dqf12,qf1le5,
+
+                          dqf12,qf1le6,dqf12,qf1le7,dqf12,qf1le8,dqf12,qf1le9,
+
+                          dqf12,midqf1,qf1le10,dqf12,qf1le11,dqf12,qf1le12,dqf12,
+
+                          qf1le13,dqf12,qf1le14,dqf12,qf1le15,dqf12,qf1le16,dqf12,qf1le17,
+
+                          dqf12,qf1le18,dqf12_1,BPBPL111,dqf12_2,qf1le19,dqf13);
+
+pc1:marker;
+
+++++++ info: element redefined: pc1
+mspl:marker;
+
+mqd:marker;
+
+IP1:marker;
+
+
+
+Siddartashort:line=(d0,BPBI1001,d1,QD0r,mqd,dir2,lQF1re,dir3s,BPBPS199,dir4s,
+
+                                        CHVPI101,CHVPI101,dir5,mspl);
+
+					
+
+Siddartalong:line=(mspl,dir5,CHVPI102,CHVPI102,dir4,BPBPL110,dir3,lQF1le,
+
+                    dir2,mqd,QD0l,d1,BPBI1002,d0);
+
+					
+
+Siddarta:line=(Siddartalong,IP1,Siddartashort);
+
+
+
+return;
+ CALL, FILE="ir2_RCR_May19.d";
+
+
+
+LSTAR_2 :=  0.130911;
+
+LIR2_2 :=  0.462277;
+
+LIR2_21 :=  0.003701;
+
+LIR2_22 :=  0.032277; 
+
+LIR3_2 :=  0.5140480;
+
+LIR3_3 :=  0.3305000;
+
+
+
+dstar_2: drift,l:=lstar_2;
+
+dir2_2: drift,l:=lir2_2;
+
+dir2_21: drift,l:=lir2_21;
+
+dir2_22: drift,l:=lir2_22;
+
+dir3_2: drift,l:=lir3_2; 
+
+dir3_3: drift,l:=lir3_3;
+
+
+
+
+
+ value,lstar_2;
+
+lstar_2            =  1.309110000e-01 ;
+ value,lir2_2;
+
+lir2_2             =  4.622770000e-01 ;
+ value,lir3_2;
+
+lir3_2             =  5.140480000e-01 ;
+ value, LIR2_21;
+
+lir2_21            =  3.701000000e-03 ;
+ value,LIR2_22;
+
+lir2_22            =  3.227700000e-02 ;
+
+
+
+
+//  large aperture quads
+
+if (ci2017 == 0.) {angh_QI2001 = 0.;}
+
+++++++ info: angh_qi2001 redefined
+if (ci2026 == 0.) {angh_QI2002 := 0.; angh_QI2006 := 0.;}
+
+dh_QI2001:multipole, knl:={angh_QI2001};
+
+dh_QI2002:multipole, knl:={angh_QI2002};
+
+dh_QI2006:multipole, knl:={-angh_QI2002};
+
+dh_QI2006l:multipole, knl:={angh_QI2006};
+
+dh_QI2006s:multipole, knl:={-angh_QI2006};
+
+dh_QI2007:multipole, knl:={-angh_QI2001};
+
+
+
+c1la:=3.9786;
+
+++++++ info: c1la redefined
+c2la:=2.72;
+
+++++++ info: c2la redefined
+
+
+if (ci2017==0) {signCi2017 :=0;} else{signCi2017 := ci2017/ABS(ci2017);}
+
+ ki2001:= signCi2017 * (c1la*(ABS(ci2017)+eps+di2001)+c2la)/en;
+
+ 
+
+if (ci2026==0) {signCi2026 :=0;} else{signCi2026 := ci2026/ABS(ci2026);} 
+
+ ki2002:= signCi2026 *(c1la*(ABS(ci2026)+eps+di2002)+c2la)/en;
+
+ 
+
+ ki2006:= signCi2026 *(c1la*(ABS(ci2026)+eps+di2002)+c2la)/en;
+
+ ki2007:= signCi2017 *(c1la*(ABS(ci2017)+eps+di2007)+c2la)/en;
+
+
+
+// gradiente dei quad large apert. a scalini
+
+// la lunghezza totale di ogni quad diventa 54 cm
+
+// i drift sono opportun. ridefiniti
+
+// i grad di ogni spessore scalano rispetto a quello nominale dei seguenti fattori:
+
+
+
+kla1=2.3135/2.34569;
+
+kla2=2.1521/2.34569;
+
+kla3=1.8637/2.34569;
+
+kla4=1.4285/2.34569;
+
+kla5=0.9780/2.34569;
+
+kla6=0.7559/2.34569;
+
+
+
+ ki20011:=kla1*ki2001*ki2_1Fudge;
+
+ ki20012:=kla2*ki2001*ki2_1Fudge;
+
+ ki20013:=kla3*ki2001*ki2_1Fudge;
+
+ ki20014:=kla4*ki2001*ki2_1Fudge;
+
+ ki20015:=kla5*ki2001*ki2_1Fudge;
+
+ ki20016:=kla6*ki2001*ki2_1Fudge;
+
+ 
+
+ ki20021:=kla1*ki2002;
+
+ ki20022:=kla2*ki2002;
+
+ ki20023:=kla3*ki2002;
+
+ ki20024:=kla4*ki2002;
+
+ ki20025:=kla5*ki2002;
+
+ ki20026:=kla6*ki2002;
+
+ 
+
+ ki20061:=kla1*ki2006*ki2_6Fudge;
+
+ ki20062:=kla2*ki2006*ki2_6Fudge;
+
+ ki20063:=kla3*ki2006*ki2_6Fudge;
+
+ ki20064:=kla4*ki2006*ki2_6Fudge;
+
+ ki20065:=kla5*ki2006*ki2_6Fudge;
+
+ ki20066:=kla6*ki2006*ki2_6Fudge;
+
+ 
+
+ ki20071:=kla1*ki2007*ki2_7Fudge;
+
+ ki20072:=kla2*ki2007*ki2_7Fudge;
+
+ ki20073:=kla3*ki2007*ki2_7Fudge;
+
+ ki20074:=kla4*ki2007*ki2_7Fudge;
+
+ ki20075:=kla5*ki2007*ki2_7Fudge;
+
+ ki20076:=kla6*ki2007*ki2_7Fudge;
+
+ 
+
+Ti2001=0.0;
+
+++++++ info: ti2001 redefined
+Ti2002=0.0;
+
+++++++ info: ti2002 redefined
+Ti2006=0.0;
+
+++++++ info: ti2006 redefined
+Ti2007=0.0;
+
+++++++ info: ti2007 redefined
+
+
+QUAI20011:quadrupole, L:=0.09, K1:=ki20011, tilt:=Ti2001;
+
+QUAI20012:quadrupole, L:=0.03, K1:=ki20012, tilt:=Ti2001;
+
+QUAI20013:quadrupole, L:=0.03, K1:=ki20013, tilt:=Ti2001;
+
+QUAI20014:quadrupole, L:=0.03, K1:=ki20014, tilt:=Ti2001;
+
+QUAI20015:quadrupole, L:=0.03, K1:=ki20015, tilt:=Ti2001;
+
+QUAI20016:quadrupole, L:=0.06, K1:=ki20016, tilt:=Ti2001;
+
+QUAI20021:quadrupole, L:=0.09, K1:=ki20021, tilt:=Ti2002;
+
+QUAI20022:quadrupole, L:=0.03, K1:=ki20022, tilt:=Ti2002;
+
+QUAI20023:quadrupole, L:=0.03, K1:=ki20023, tilt:=Ti2002;
+
+QUAI20024:quadrupole, L:=0.03, K1:=ki20024, tilt:=Ti2002;
+
+QUAI20025:quadrupole, L:=0.03, K1:=ki20025, tilt:=Ti2002;
+
+QUAI20026:quadrupole, L:=0.06, K1:=ki20026, tilt:=Ti2002;
+
+QUAI20061:quadrupole, L:=0.09, K1:=ki20061, tilt:=Ti2006;
+
+QUAI20062:quadrupole, L:=0.03, K1:=ki20062, tilt:=Ti2006;
+
+QUAI20063:quadrupole, L:=0.03, K1:=ki20063, tilt:=Ti2006;
+
+QUAI20064:quadrupole, L:=0.03, K1:=ki20064, tilt:=Ti2006;
+
+QUAI20065:quadrupole, L:=0.03, K1:=ki20065, tilt:=Ti2006;
+
+QUAI20066:quadrupole, L:=0.06, K1:=ki20066, tilt:=Ti2006;
+
+QUAI20071:quadrupole, L:=0.09, K1:=ki20071, tilt:=Ti2007;
+
+QUAI20072:quadrupole, L:=0.03, K1:=ki20072, tilt:=Ti2007;
+
+QUAI20073:quadrupole, L:=0.03, K1:=ki20073, tilt:=Ti2007;
+
+QUAI20074:quadrupole, L:=0.03, K1:=ki20074, tilt:=Ti2007;
+
+QUAI20075:quadrupole, L:=0.03, K1:=ki20075, tilt:=Ti2007;
+
+QUAI20076:quadrupole, L:=0.06, K1:=ki20076, tilt:=Ti2007;
+
+
+
+QUAI2001:line=(QUAI20016,QUAI20015,QUAI20014,QUAI20013,QUAI20012,QUAI20011,
+
+              dh_QI2001,QUAI20011,QUAI20012,QUAI20013,QUAI20014,QUAI20015,QUAI20016);
+
+QUAI2002:line=(QUAI20026,QUAI20025,QUAI20024,QUAI20023,QUAI20022,QUAI20021,
+
+              dh_QI2002,QUAI20021,QUAI20022,QUAI20023,QUAI20024,QUAI20025,QUAI20026);
+
+QUAI2006:line=(QUAI20066,QUAI20065,QUAI20064,QUAI20063,QUAI20062,QUAI20061,
+
+              dh_QI2006,QUAI20061,QUAI20062,QUAI20063,QUAI20064,QUAI20065,QUAI20066);
+
+QUAI2006a:line=(QUAI20066,QUAI20065,QUAI20064,QUAI20063,QUAI20062,QUAI20061);
+
+QUAI2006b:line=(QUAI20061,QUAI20062,QUAI20063,QUAI20064,QUAI20065,QUAI20066);
+
+QUAI2007:line=(QUAI20076,QUAI20075,QUAI20074,QUAI20073,QUAI20072,QUAI20071,
+
+              dh_QI2007,QUAI20071,QUAI20072,QUAI20073,QUAI20074,QUAI20075,QUAI20076);
+
+	      
+
+IP2:marker;
+
+
+
+!finudalong:line=(dstar_2,QUAI2002,dir2_21,BPBPL299,dir2_22,QUAI2001,dir3_2);
+
+!finudashort:line=(dir3_2,QUAI2007,dir2_2,QUAI2006,dstar_2);
+
+
+
+finudalong:line=(QUAI2006b,dir2_21,dir2_22,
+
+                   QUAI2001,dir3_3,CHVPI201,CHVPI201,dir3_2);
+
+finudashort:line=(dir3_2,CHVPI202,CHVPI202,dir3_3,QUAI2007,
+
+                   dir2_22,dir2_21,QUAI2006a);
+
+finuda:line=(finudalong,IP2,finudashort);
+
+// CALL, FILE="ir2_siddarta_20_3_08.d";
+
+ CALL, FILE="ring_siddharta2_Chalf_p_Nov_19.d";
+
+pl1:LINE=(sept_quad,ll13a,2*(SXPPL100),LL13b,2*(quapl101),LL12a,CHVPL101,
+
+                    CHVPL101,LL12b,OCTPL101,LL12c,BPBPL101,LL12d,OCTPL201,LL12e,
+
+                    2*(SXPPL101),LL9,2*(quapl102),LL8a,CHVPL102,CHVPL102,LL8b,quapl103,
+
+                    quapl103a,kckpl101,quapl103b,ll7_1,ll7,2*(quapl104),LL5a,BPBPL102,LL5b,
+
+                    QSKPL103,CHVPL103,QSKPL103,LL4,2*(quapl114),LL1,BL2A,BL2B,LCL13,
+
+                    BPBPL103,LCL12,quapl105,quapl105,LCL11,
+
+                    CHVPL104,CHVPL104,LCL10,2*(SXPPL102),LCL9,
+
+                    BPBPL104,LCL8,WIGGLERpl1,LCL7,BPBPL105,
+
+                    LCL6,quapl106,multipl106,quapl106,LCL5,CHVPL105,CHVPL105,LCL4,
+
+                    2*(SXPPL103),LCL3,quapl107,multipl107,quapl107,LCL2,
+
+                    BPBPL106,LCL1,BL1A,BL1B,LML9,
+
+                    QSKPL106,CHVpl106,QSKPL106,LMS8_2,BPBPL107,LMS8_1,2*(SXPPL104),
+
+                    LMS6,2*(quapl108),LMS5_1,BPBPL108,LMS5_2,2*(quapl109),LMS3,
+
+		    DHCPL101,M_DHCPL101,DHCPL101,LMS2,2*(quapl110),LMS1_2,BPBPL109,
+
+                    lms1a_1,2*(quapl111),LMS1);
+
+		    
+
+ps1:LINE=(LMS1,2*(quaps100),lms1a,BPBPS100,LMS1_1,2*(quaps101),LMS2,
+
+                      DCPS101s,M_DHCPS101,
+
+                      DCPS101l,LMS3_1,BPBPS101,LMS3_2,2*(quaps102),
+
+                      LMS5,2*(quaps103),LMS6_1,BPBPS102,LMS6_2,2*(SXPPS101),
+
+                      LMS8,QSKPS101,CHVps101,QSKPS101,LMS9,
+
+                      BS1A,BS1B,lcs1,BPBPS103,LCS2,
+
+                      quaps104,multips104,quaps104,LCS3,2*(SXPPS102),LCS4,
+
+                      CHVps102,CHVps102,lcs5,quaps105,multips105,quaps105,LCS6,
+
+                      BPBPS104,lcs7,WIGGLERps1,lcs8,BPBPS105,
+
+                      lcs9,2*(SXPPS103),LCS10,CHVps103,CHVps103,
+
+                      lcs11,quaps106,quaps106,lcs12,BPBPS106,
+
+                      lcs13,BS2A,BS2B,ls1_1,2*(quaps107),LS2_1,QSKPS104,CHVps104,QSKPS104,
+
+                      LS3_1,BPBPS107,ls4,ls4a,OCTPS101,ls4b,
+
+                      LS5_1,2*(quaps108),LS6_1,2*(rfcav),ls7,
+
+                      CHVps105,CHVps105,lS8,2*(quaps109),LS9,
+
+                      BPBPS108,ls10,ls11,quaps110);
+
+		      
+
+PS2:LINE=(quaps110,ls10a,BPBPS201,ls9b,CHVps106,CHVps106,ls9b_1,ktrh,
+
+                      LS9a_1,2*(quaps201),ls9c,BPBPS202,ls7c,
+
+                      LS7b,CHVps201,CHVps201,ls6b,ktrv,ls6c,2*(quaps202),
+
+                      ls5,2*(SXPPS201),LS4_1,BPBPS203,
+
+                      LS3,QSKPS202,CHVps202,QSKPS202,LS2,2*(quaps203),
+
+                      ls1,BS2A,slm,BS2B,lcs13,
+
+                      BPBPS204,lcs12,quaps204,quaps204,lcs11,
+
+                      CHVps203,CHVps203,LCS10,2*(SXPPS202),lcs9,
+
+                      BPBPS205,lcs8,WIGGLERps2,lcs7,BPBPS206,
+
+                      LCS6,quaps205,multips205,quaps205,lcs5,CHVps204,CHVps204,LCS4,
+
+                      2*(SXPPS203),LCS3,quaps206,multips206,quaps206,
+
+                      LCS2,BPBPS207,LCS1,BS1A,BS1B,
+
+                      LMS9_2,QSKPS205,CHVps205,QSKPS205,LMS10,2*QUAPS207,LMS11s_1,
+
+                      BPBPS208,LMS11s,2*QUAPS208,LMS12s_1,BPBPS209,LMS12s,DHCPS201,
+
+                      M_DHCPS201,DHCPS201,LMS13_1,2*(QUAPS209),LMS14_2,BPBPS210,LMS14_1,
+
+                      LMS15);
+
+pl2:LINE=(LMS15,LMS14_3,BPBPL299,LMS14_4,2*(quapl201),LMS13,
+
+                      DHCPL201,M_DHCPL201,DHCPL201,
+
+                      LMS12l,BPBPL200,LMS12l_1,BPBPL201,LMS12l_2,2*(quapl202),LMS11l,
+
+                      BPBPL202,LMS11l_1,2*(quapl203),LMS10,QSKPL201,CHVpl201,QSKPL201,
+
+                      LML9_2,BL1A,BL1B,lcl1,BPBPL203,LCL2,
+
+                      quapl204,multipl204,quapl204,LCL3,2*(SXPPL202),LCL4,
+
+                      CHVpl202,CHVpl202,lcl5,quapl205,multipl205,quapl205,LCL6,
+
+                      BPBPL204,lcl7,WIGGLERpl2,lcl8,BPBPL205,
+
+                      lcl9,2*(SXPPL203),LCL10,CHVpl203,CHVpl203,
+
+                      lcl11,quapl206,quapl206,LCL12,BPBPL206,
+
+                      lcl13,BL2A,BL2B,ll1,2*(quapl217),LL4,QSKPL204,
+
+                      CHVpl204,QSKPL204,
+
+                      LL5c,BPBPL207,LL5d,2*(quapl207),ll7,ll7_1,
+
+		      quapl208b,kckpl202,quapl208a,quapl208,
+
+		      LL8c,CHVPL205,CHVPL205,LL8d,2*(quapl209),
+
+                      LL9a,BPBPL208,LL9b,2*(SXPPL204),LL12f,CHVPL206,CHVPL206,LL12g,
+
+                      2*(quapl210),LL13c,BPBPL209,LL13,sept_quad);
+
+		      
+
+wholeip1:LINE=(SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,
+
+                                          finudalong,pl2,mid2,pl1,siddartalong,IP1);
+
+
+
+return;
+//  CALL, FILE="ring_siddharta2_Chalf_19_10slice.d";
+
+
+
+ call, FILE="getTwiss_p.cmd";
+
+
+
+ ms1:marker;
+
+ mid2:marker;
+
+!wholeip1:LINE=(SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,
+
+!                                          finudalong,pl2,mid2,pl1,siddartalong,IP1);
+
+ wholp:LINE=(mid2,pl1,siddartalong,IP1,SIDDARTAshort,PS1,ms1,PS2,finudashort,IP2,finudalong,pl2);
+
+! use, period=wholeip1;
+
+ 
+
+ rfcav: rfcavity,l=lcav/2,volt=0.1,lag=0.49,harmon=120;
+
+++++++ info: element redefined: rfcav
+ BEAM,particle=electron,energy=0.51,charge := 2.E+10,radiate= false;
+
+
+
+ use, period=wholp;
+
+
+
+!save, sequence=wholekf, file='DAFNE.seq';
+
+!call, FILE= "DAFNE.seq";
+
+
+
+
+
+ ym := (table(twiss,y)*100000); !mm
+
+ xm := (table(twiss,x)*100000);  ! mm
+
+select, flag=twiss, clear;
+
+! select, flag=twiss, column=name, s,angle,K1l,k2l,betx,bety,mux,muy;
+
+// select, flag=twiss, column=name, s,betx,bety,xm,ym;
+
+!select, flag=twiss, column=name,s,betx,bety,dx,dy,DDX,DDY;
+
+ select, flag=twiss, column=name, s,betx,bety,dx,dy,DDX,DDY,alfx,alfy,mux,muy;  // for Mad-X interface
+
+// select, flag=twiss, column=name, s,betx,bety,dx,dy;                              // to compute average betas
+
+//twiss,chrom,betx =9.67893, bety = 1.36743, dx = -1.31607, file=e.dat,save;
+
+
+
+twiss,chrom,file="pos.dat",save;
+
+enter Twiss module
+  
+iteration:   1 error:   4.035136E-05 deltap:   1.000000E-06
+orbit:  -1.441435E-06  3.233610E-09  0.000000E+00  0.000000E+00 -8.143088E-03 -2.672118E-09
+  
+iteration:   2 error:   7.580594E-08 deltap:   1.000000E-06
+orbit:  -1.418350E-06  2.484097E-10  0.000000E+00  0.000000E+00 -8.132363E-03 -1.442234E-09
+++++++ warning: TW_SUMM:  Difference in the calculation of cosmux: cosmux - cos(amux) =   0.174687E-03                                                                          
+++++++ warning: TW_SUMM:  cosmux  =   0.848571E+00, cos(amux) =  0.848396E+00                                                                                                   
+  
+iteration:   1 error:   4.013391E-05 deltap:   0.000000E+00
+orbit:  -2.530501E-08  2.983094E-09  0.000000E+00  0.000000E+00 -8.143118E-03 -1.319456E-09
+  
+iteration:   2 error:   7.615605E-08 deltap:   0.000000E+00
+orbit:  -4.469811E-14  5.039905E-15  0.000000E+00  0.000000E+00 -8.132393E-03  5.153334E-15
+++++++ warning: TW_SUMM:  Difference in the calculation of cosmux: cosmux - cos(amux) =   0.174657E-03                                                                          
+++++++ warning: TW_SUMM:  cosmux  =   0.848569E+00, cos(amux) =  0.848394E+00                                                                                                   
+
+++++++ table: summ
+
+          length           orbit5             alfa          gammatr 
+ 9.758866355e+01  8.132392712e-03  1.882712085e-02  7.287994644e+00 
+
+              q1              dq1          betxmax            dxmax 
+ 5.088784936e+00 -6.753058261e-01  2.021364968e+01  2.170185696e+00 
+
+           dxrms           xcomax           xcorms               q2 
+ 1.076263002e+00  7.867114884e-14  4.142345694e-14  5.145485632e+00 
+
+             dq2          betymax            dymax            dyrms 
+-8.447660442e-01  1.971040762e+01 -0.000000000e+00  0.000000000e+00 
+
+          ycomax           ycorms           deltap          synch_1 
+ 0.000000000e+00  0.000000000e+00  0.000000000e+00  1.838184608e+00 
+
+         synch_2          synch_3          synch_4          synch_5 
+ 9.318292367e+00  7.624727299e+00  1.425177084e-01  7.429230120e+00 
+
+         synch_6          synch_8           nflips            dqmin 
+ 3.978192310e+02  4.331585910e+01  0.000000000e+00  0.000000000e+00 
+
+     dqmin_phase 
+ 0.000000000e+00 
+save, sequence= wholp, file='p_whole_seq';
+
+++++++ warning: SAVE makes all previous USE invalid !  
+
+
+!twiss,chrom,file=daphneClosed;
+
+
+
+
+
+//survey, x0:=0, z0:=0.,theta0:=0;
+
+
+
+return;
+
+ 
+
+ value, SXTKL100;
+
+sxtkl100           = -8.384313725e+00 ;
+ value, SXTKL101;
+
+sxtkl101           =  2.193137255e+01 ;
+ value, SXTKL102;
+
+sxtkl102           =  3.008010458e+01 ;
+ value, SXTKL103;
+
+sxtkl103           = -6.754300654e+01 ;
+ value, SXTKL104;
+
+sxtkl104           = -1.111232452e+02 ;
+ value, SXTKS101;
+
+sxtks101           =  1.111232452e+02 ;
+ value, SXTKS102;
+
+sxtks102           = -1.937641830e+01 ;
+ value, SXTKS103;
+
+sxtks103           =  0.000000000e+00 ;
+ value, SXTKS104;
+
+sxtks104           =  0.000000000e+00 ;
+ value, SXTKS201;
+
+sxtks201           = -1.225490196e+01 ;
+ value, SXTKS202;
+
+sxtks202           =  8.761241830e+01 ;
+ value, SXTKS203;
+
+sxtks203           = -5.215645752e+01 ;
+ value, SXTKS204;
+
+sxtks204           =  0.000000000e+00 ;
+ value, SXTKL201;
+
+sxtkl201           =  0.000000000e+00 ;
+ value, SXTKL202;
+
+sxtkl202           = -3.543194771e+01 ;
+ value, SXTKL203;
+
+sxtkl203           =  4.680461438e+01 ;
+ value, SXTKL204;
+
+sxtkl204           =  3.354313725e+01 ;
+ value, IOCTPS104
+
+ value, IOCTPL210
+
+ value, IOCTPL101
+
+ value, ccw0;
+
+ioctps104value     =  0.000000000e+00 ;
+ioctpl210value     =  0.000000000e+00 ;
+ioctpl101value     =  0.000000000e+00 ;
+ccw0               =  1.150000000e+01 ;
+ value, ccw1;
+
+ccw1               = -5.300700000e-02 ;
+ value, ccw2;
+
+ccw2               =  1.480900000e-03 ;
+ value, br0;
+
+br0                =  1.701176886e+00 ;
+ value, lsl;
+
+lsl                =  1.500000000e-01 ;
+
+
+// call, FILE="dynAp.cmd";
+
+
+
+ value,  QFLFUDGE;
+
+qflfudge           =  9.517910000e-01 ;
+ value,  QFRFUDGE;
+
+qfrfudge           =  9.517910000e-01 ;
+ value,  QDFUDGE;
+
+qdfudge            =  9.959350000e-01 ;
+
+
+ value,  qf1r1tilt;
+
+qf1r1tilt          =  0.000000000e+00 ;
+ value,  qf1l1tilt;
+
+qf1l1tilt          =  0.000000000e+00 ;
+ value,  qd0rTilt;
+
+qd0rtilt           =  0.000000000e+00 ;
+ value,  qd0lTilt;
+
+qd0ltilt           =  0.000000000e+00 ;
+
+
+ value, ang_w;
+
+ang_w              = -1.097140000e-01 ;
+ value, k1fw;
+
+k1fw               = -2.041260000e-03 ;
+
+
+ value, Fint_wig;
+
+fint_wig           =  3.700000000e-01 ;
+ value, anggp;
+
+anggp              =  8.639378600e-01 ;
+
+
+ value, betapl;
+
+betapl             = -3.700000000e-02 ;
+ value, betaps;
+
+betaps             = -2.750000000e-02 ;
+ value, betasl;
+
+betasl             = -1.650000000e-02 ;
+ value, betass;
+
+betass             =  4.800000000e-02 ;
+ value, betaps;
+
+betaps             = -2.750000000e-02 ;
+
+
+ value, ci2026;
+
+ci2026             = -1.032070000e+02 ;
+
+
+ value, kseptum;
+
+kseptum            =  8.134960000e-03 ;
+
+
+ value, dd12;
+
+dd12               =  0.000000000e+00 ;
+ value, dd23;
+
+dd23               =  4.635708817e-02 ;
+
+
+ value, k1st;
+
+k1st               =  0.000000000e+00 ;
+ 
+
+ value, angh_QI2001;
+
+angh_qi2001        =  0.000000000e+00 ;
+
+
+ Value, KS102;
+
+ks102              =  2.660121254e+00 ;
+ Value, KL210;
+
+kl210              =  1.339987372e+00 ;
+ Value, KS102A;
+
+ks102a             =  0.000000000e+00 ;
+ Value, KI2001;
+
+ki2001             =  0.000000000e+00 ;
+ Value, KI2007;
+
+ki2007             =  0.000000000e+00 ;
+ Value, KL101;
+
+kl101              =  1.339987372e+00 ;
+ Value, KI2_1FUDGE;
+
+ki2_1fudge         =  1.000000000e+00 ;
+ Value, KI2_6FUDGE;
+
+ki2_6fudge         =  1.000000000e+00 ;
+ Value, KI2_7FUDGE;
+
+ki2_7fudge         =  1.000000000e+00 ;
+ 
+
+stop;
+
+
+  Number of warnings: 5
+1 in C and 4 in Fortran
+
+  ++++++++++++++++++++++++++++++++++++++++++++
+  +          MAD-X finished normally         +
+  ++++++++++++++++++++++++++++++++++++++++++++

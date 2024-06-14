@@ -1,0 +1,113 @@
+ TITLE, S="Elettroni:  Modello  per Siddharta_2 Spt 2019";
+ option,echo = false,warn = true;
+ set,format="16.9e";
+
+ CALL, FILE="e_siddharta2_Spt19.par";
+
+
+//   call, FILE = "eMRe_20191106_2352_notte_1200_mAh.cur";
+//   call, FILE = "eMRe_20191218_1450_misureBeta_linear.cur";
+//   call, FILE = "eMRe_20200228_1827_RSM_CWSXP_200Amps.cur";
+//   call, FILE = "eMRe_20210715_1232_after_pannello_QUAEI2017.cur";
+//   call, FILE = "eMRe_20220701_1838_linearRing.cur";
+//  call, FILE = "eMRe_20230328_firstOptics.cur";
+  call, FILE = "eMRe_20230509_misureDiBeta.cur";
+  
+
+ CALL, FILE="bendx_siddarta1.d";
+// CALL, FILE="wig_siddarta_low.d";
+ CALL, FILE="WiggNew.d";           ! wiggler upgrade 2010
+ CALL, FILE="kick.d";
+ CALL, FILE="bpm_e_19.d";
+ CALL, FILE="drift_siddharta2_Nov_19.d";
+ CALL, FILE="chv.d";
+// CALL, FILE="sxp_siddarta.d";
+// CALL, FILE="sxp_siddarta_Jan_09.d";
+// CALL, FILE="sxp_siddarta_e_Jan_09.d";
+  CALL, FILE="sxp_siddarta_e_Jun_23.d";
+ CALL, FILE="skew.d";
+ CALL, FILE="qua_siddarta_e_08.d";
+//  CALL, FILE="qua_siddarta_19_10.d";
+ CALL, FILE="ir1_siddharta2_e_Spt19.d";
+// CALL, FILE="ir2_RCR_May19.d";
+  CALL, FILE="ir2_RCR_Jun23.d";
+// CALL, FILE="ir2_siddarta_20_3_08.d";
+ CALL, FILE="ring_siddharta2_Chalf_e_Nov_19.d";
+ // CALL, FILE="ring_siddharta2_Chalf_19_10slice.d";
+
+
+ value, SXTKL100;
+ value, SXTKL101;
+ value, SXTKL102;
+ value, SXTKL103;
+ value, SXTKL104;
+ value, SXTKS101;
+ value, SXTKS102;
+ value, SXTKS103;
+ value, SXTKS104;
+ value, SXTKS201;
+ value, SXTKS202;
+ value, SXTKS203;
+ value, SXTKS204;
+ value, SXTKL201;
+ value, SXTKL202;
+ value, SXTKL203;
+ value, SXTKL204;
+ value, ccw0;
+ value, ccw1;
+ value, ccw2;
+ value, br0;
+ value, lsl;
+
+ call, FILE="getTwiss_e.cmd";
+!  call, FILE="getTouschek_e.cmd";
+! call, FILE="getTwissPTC_e.cmd";
+
+
+// call, FILE="dynAp.cmd";
+
+ value,  QFLFUDGE;
+ value,  QFRFUDGE;
+ value,  QDFUDGE;
+
+ value,  qf1r1tilt;
+ value,  qf1l1tilt;
+ value,  qd0rTilt;
+ value,  qd0lTilt;
+
+ value, ang_w;
+ value, k1fw;
+
+ value, Fint_wig;
+ value, anggp;
+
+ value, betapl;
+ value, betaps;
+ value, betasl;
+ value, betass;
+ value, betaps;
+
+ value, ci2026;
+
+ value, kseptum;
+
+ value, dd12;
+ value, dd23;
+
+ value, k1st;
+ 
+ value, angh_QI2001;
+
+ Value, KS102;
+ Value, KL210;
+ Value, KS102A;
+ Value, KI2001;
+ Value, KI2007;
+ Value, KL101;
+ Value, KI2_1FUDGE;
+ Value, KI2_6FUDGE;
+ Value, KI2_7FUDGE;
+
+save, sequence = whole, file="../sequences/DAFNE_e.seq";
+ 
+stop
